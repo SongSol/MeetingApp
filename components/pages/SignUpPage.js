@@ -15,7 +15,6 @@ export default function SignUpPage({navigation}) {
         <Button
             title="会員登録"
             // onPress={() => navigation.navigate('SignInPage')}
-            // onPress={() => navigation.push('Detail')}
         />
     
     </View>
