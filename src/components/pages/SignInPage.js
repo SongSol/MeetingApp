@@ -3,7 +3,7 @@ import {View, Button, StyleSheet} from 'react-native';
 import CustomText from '../atoms/CustomText';
 import CustomTextInput from '../atoms/CustomTextInput';
 
-export default function SignInPage({}) {
+export default function SignInPage({navigation}) {
     const email = "EMAIL";
     const password = "PASSWORD";
 
@@ -23,7 +23,7 @@ export default function SignInPage({}) {
         <CustomTextInput placeholder={"passwordを入力してください。"} />
         <Button
             title="ログイン"
-            // onPress={() => navigation.navigate('SignInPage')}
+            onPress={() => navigation.navigate('JudgeLookPage')}
             // onPress={() => navigation.push('Detail')}
         />
         
