@@ -1,6 +1,6 @@
 import React from 'react';
-import {View, Button, StyleSheet } from 'react-native';
-
+import {View, StyleSheet } from 'react-native';
+import { Button } from '@react-native-material/core'
 export default function InitialPage({navigation}) {
 
     const styles = StyleSheet.create({
@@ -10,17 +10,23 @@ export default function InitialPage({navigation}) {
           alignItems: 'center',
           justifyContent: 'center',
         },
+        button: {
+            width: 200,
+            height: 50,
+            margin: 10,
+        }
       });
     return (
         <View style={styles.container}>
             <Button
                 title="ログイン"
                 onPress={() => navigation.navigate('SignInPage')}
-                // onPress={() => navigation.push('Detail')}
+                style={styles.button}
             />
             <Button
                 title="会員登録"
-                onPress={() => navigation.navigate('SignUpPage')}
+                onPress={() => navigation.navigate('Gender')}
+                style={styles.button}
                 // onPress={() => navigation.push('Detail')}
             />
             

@@ -1,7 +1,8 @@
 import React from 'react';
-import {View, Button, StyleSheet} from 'react-native';
-import CustomText from '../atoms/CustomText';
-import CustomTextInput from '../atoms/CustomTextInput';
+import {View, StyleSheet} from 'react-native';
+import { Button } from '@react-native-material/core'
+import CustomText from '@components/atoms/CustomText';
+import CustomTextInput from '@components/atoms/CustomTextInput';
 
 export default function SignInPage({navigation}) {
     const email = "EMAIL";
@@ -14,7 +15,13 @@ export default function SignInPage({navigation}) {
           alignItems: 'center',
           justifyContent: 'center',
         },
-      });
+        button: {
+          width: 200,
+          height: 50,
+          margin: 20,
+        }
+    });
+
   return (
     <View style={styles.container}>
         <CustomText title={email}/>
@@ -24,6 +31,7 @@ export default function SignInPage({navigation}) {
         <Button
             title="ログイン"
             onPress={() => navigation.navigate('JudgeLookPage')}
+            style={styles.button}
             // onPress={() => navigation.push('Detail')}
         />
         
