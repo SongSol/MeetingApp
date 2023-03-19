@@ -41,7 +41,7 @@ export default function OffDay({navigation}) {
         />
         <Button
             title="次へ"
-            onPress={() => navigation.navigate('Address')}
+            onPress={() => navigation.navigate('JudgeLookPage')}
             style={styles.button}
             variant="text"
             // onPress={() => navigation.push('Detail')}

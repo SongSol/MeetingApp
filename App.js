@@ -14,6 +14,7 @@ import Address from '@components/pages/SignUp/Address';
 import Job from '@components/pages/SignUp/Job';
 import AnnualSalary from '@components/pages/SignUp/AnnualSalary';
 import OffDay from '@components/pages/SignUp/OffDay';
+import JudgeSelfLook from '@components/pages/JudgeSelfLook';
 
 // import {View, Button, Image, StyleSheet, Text} from 'react-native';
 
@@ -37,6 +38,7 @@ export default function App() {
         <Stack.Screen name="AnnualSalary" component={AnnualSalary} />
         <Stack.Screen name="OffDay" component={OffDay} />
         <Stack.Screen name="JudgeLookPage" component={JudgeLookPage} />
+        <Stack.Screen name="JudgeSelfLook" component={JudgeSelfLook} />
       </Stack.Navigator>
     </NavigationContainer>
     
