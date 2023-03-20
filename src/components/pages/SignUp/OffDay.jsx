@@ -1,8 +1,9 @@
 import React from 'react';
 import {View, StyleSheet, FlatList,} from 'react-native';
+import { Button } from "@react-native-material/core";
 
 import CustomText from '@components/atoms/CustomText';
-import { Button } from "@react-native-material/core";
+import OffDayData from '@assets/signUpDataList/OffDayData';
 
 
 export default function OffDay({navigation}) {
@@ -35,7 +36,7 @@ export default function OffDay({navigation}) {
         <CustomText title={"どんな仕事していますか"}/>
         
         <FlatList
-        data={DATA}
+        data={OffDayData()}
         renderItem={({item}) => <Item title={item.title} />}
         keyExtractor={item => item.id}
         />

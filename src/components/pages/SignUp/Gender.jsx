@@ -1,4 +1,5 @@
 import React from 'react';
+
 import {View, StyleSheet, Button} from 'react-native';
 
 export default function Gender({navigation}) {
@@ -17,17 +18,16 @@ export default function Gender({navigation}) {
         {/* <CustomListItem
           list={genderList}
         /> */}
-        <Button
-            title="男性"
-            onPress={() => navigation.navigate('Nickname')}
-            // onPress={() => navigation.push('Detail')}
-        />
-        <Button
-            title="女性"
-            onPress={() => navigation.navigate('Nickname')}
-            // onPress={() => navigation.push('Detail')}
-        />
-        
+      <Button
+          title="男性"
+          onPress={() => navigation.navigate('Nickname')}
+          // onPress={() => navigation.push('Detail')}
+      />
+      <Button
+          title="女性"
+          onPress={() => navigation.navigate('Nickname')}
+          // onPress={() => navigation.push('Detail')}
+      />
     </View>
   );
 }

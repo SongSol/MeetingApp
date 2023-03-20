@@ -1,8 +1,10 @@
 import React from 'react';
 import {View, StyleSheet, FlatList,} from 'react-native';
+import { Button } from "@react-native-material/core";
 
 import CustomText from '@components/atoms/CustomText';
-import { Button } from "@react-native-material/core";
+import AnnualSalaryData from '@assets/signUpDataList/AnnualSalaryData';
+
 
 
 export default function AnnualSalary({navigation}) {
@@ -19,25 +21,18 @@ export default function AnnualSalary({navigation}) {
             margin: 10
         }
     });
-    const DATA = [
-        { id: 1, title: '200万未満',}, { id: 2, title: '200万以上 ~ 400万未満',},
-        { id: 3, title: '400万以上 ~ 600万未満',}, { id: 4, title: '600万以上 ~ 800万未満',},
-        { id: 5, title: '800万以上 ~ 1000万未満',}, { id: 6, title: '1000万以上 ~ 1500万未満',},
-        { id: 7, title: '1500万以上 ~ 2000万未満',}, { id: 8, title: '2000万以上 ~ 3000万未満',},
-       
-      ];
-      const Item = ({title}) => (
-        <View style={styles.item}>
-            <Button title={title} variant="text"/>
-        </View>
-      );
+
+    const Item = ({title}) => (
+      <View style={styles.item}>
+          <Button title={title} variant="text"/>
+      </View>
+    );
 
     return (
-    <View style={styles.container}>
+      <View style={styles.container}>
         <CustomText title={"どんな仕事していますか"}/>
-        
         <FlatList
-        data={DATA}
+        data={AnnualSalaryData()}
         renderItem={({item}) => <Item title={item.title} />}
         keyExtractor={item => item.id}
         />
@@ -48,7 +43,6 @@ export default function AnnualSalary({navigation}) {
             variant="text"
             // onPress={() => navigation.push('Detail')}
         />
-        
-    </View>
+      </View>
   );
 }
