@@ -29,6 +29,17 @@ export default function InitialPage({navigation}) {
                 style={styles.button}
                 // onPress={() => navigation.push('Detail')}
             />
+            <Button
+                title="社員アップロードページ"
+                onPress={() => navigation.navigate('PictureUploadPage')}
+                // onPress={() => navigation.push('Detail')}
+            />      
+                        <Button
+                title="심사탈락"
+                onPress={() => navigation.navigate('Judgefail')}
+                // onPress={() => navigation.push('Detail')}
+            />    
+                  
             
         </View>
     );
