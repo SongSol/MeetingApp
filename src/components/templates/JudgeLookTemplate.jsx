@@ -1,6 +1,6 @@
 import React from 'react';
 import {View, StyleSheet, Text } from 'react-native';
-import Image from '@components/atoms/Image.js';
+import Image from '@components/atoms/Image';
 import { Button } from '@react-native-material/core'
 
 const JudgeLookTemplate = props =>  {

@@ -1,7 +1,7 @@
 import React from 'react';
 import {View, StyleSheet } from 'react-native';
-import Image from '@components/atoms/Image.js';
-import BarChartView from '@components/templates/BarChart.js';
+import Image from '@components/atoms/Image';
+import BarChartView from '@components/templates/BarChart';
 
 export default function JudgeSelfLook({navigation}) {
     const styles = StyleSheet.create({

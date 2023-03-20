@@ -1,6 +1,6 @@
 import React from 'react';
 import {View, StyleSheet } from 'react-native';
-import Image from '@components/atoms/Image.js';
+import Image from '@components/atoms/Image';
 import { Button } from '@react-native-material/core'
 
 export default function PictureUploadPage({navigation}) {
