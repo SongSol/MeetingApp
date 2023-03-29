@@ -1,10 +1,10 @@
 import React from 'react';
 import {View, StyleSheet } from 'react-native';
 import Image from '@components/atoms/Image';
-import { Button } from '@react-native-material/core'
+import  Button from '@components/atoms/Button'
 
-export default function PictureUploadPage({navigation}) {
-
+export default function PictureUploadPage() {
+    const title = "사진업로드";
     const styles = StyleSheet.create({
         container: {
           flex: 1,
@@ -18,15 +18,9 @@ export default function PictureUploadPage({navigation}) {
             height: 300,
             borderRadius: 20,
         },
-
-        score_btn: {
-            width: 100,
-            height: 50,
-            margin: 10
-        }
       });
 
-      const members = { id: 1, src: require('@assets/images/사토미.png') }
+
     return (
         <View style={styles.container}>
             <Image 
@@ -35,8 +29,8 @@ export default function PictureUploadPage({navigation}) {
                 type='Profile'
             />
             <Button 
-                style={styles.score_btn}
-                title='사진업로드'
+                title={title} 
+                type='Long'
             />
         </View>
     );

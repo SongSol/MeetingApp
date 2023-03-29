@@ -51,27 +51,27 @@ export default function ButtonAtom({ title, type }) {
     switch(type) {
         case 'Long':
             return (
-                <Pressable style={styles.longbutton} >
+                <Button style={styles.longbutton} >
                   <Text style={styles.text}>{title}</Text>
-                </Pressable>
+                </Button>
             );
         case 'Middle':
             return (
-                <Pressable style={styles.middlebutton} >
+                <Button style={styles.middlebutton} >
                   <Text style={styles.text}>{title}</Text>
-                </Pressable>
+                </Button>
             );
         case 'Small':
             return (
-                <Pressable style={styles.smallbutton} >
+                <Button style={styles.smallbutton} >
                   <Text style={styles.text}>{title}</Text>
-                </Pressable>
+                </Button>
             );
         default:
             return (
-                <Pressable style={styles.button} >
+                <Button style={styles.button} >
                   <Text style={styles.text}>{title}</Text>
-                </Pressable>
+                </Button>
               );
     }
 }
