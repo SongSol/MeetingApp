@@ -1,6 +1,7 @@
 import React from 'react';
 import {View, StyleSheet } from 'react-native';
-import { Button } from '@react-native-material/core'
+import { Button } from 'react-native-paper';
+
 export default function InitialPage({navigation}) {
 
     const styles = StyleSheet.create({
@@ -18,29 +19,18 @@ export default function InitialPage({navigation}) {
       });
     return (
         <View style={styles.container}>
-            <Button
-                title="ログイン"
-                onPress={() => navigation.navigate('SignInPage')}
-                style={styles.button}
-            />
-            <Button
-                title="会員登録"
-                onPress={() => navigation.navigate('Gender')}
-                style={styles.button}
-                // onPress={() => navigation.push('Detail')}
-            />
-            <Button
-                title="社員アップロードページ"
-                onPress={() => navigation.navigate('PictureUploadPage')}
-                // onPress={() => navigation.push('Detail')}
-            />      
-                        <Button
-                title="심사탈락"
-                onPress={() => navigation.navigate('Judgefail')}
-                // onPress={() => navigation.push('Detail')}
-            />    
-                  
-            
+            <Button mode="text" onPress={() => navigation.navigate('SignInPage')}>
+                ログイン
+            </Button>
+            <Button mode="text" onPress={() => navigation.navigate('Gender')}>
+                会員登録
+            </Button>
+            <Button mode="text" onPress={() => navigation.navigate('PictureUploadPage')}>
+                写真アッポロード
+            </Button>
+            <Button mode="text" onPress={() => navigation.navigate('Judgefail')}>
+                심사탈락
+            </Button>
         </View>
     );
 }

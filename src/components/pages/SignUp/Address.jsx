@@ -1,6 +1,6 @@
 import React from 'react';
 import {View, StyleSheet, FlatList,} from 'react-native';
-import { Button } from "@react-native-material/core";
+import { Button } from 'react-native-paper';
 
 import CustomText from '@components/atoms/CustomText';
 import AddressData from '@assets/signUpDataList/AddressData';
@@ -23,7 +23,9 @@ export default function Address({navigation}) {
 
     const Item = ({title}) => (
       <View style={styles.item}>
-          <Button title={title} variant="text"/>
+          <Button mode="text" onPress={() => alert('OK')}>
+            {title}
+          </Button>
       </View>
     );
 
@@ -36,13 +38,9 @@ export default function Address({navigation}) {
       renderItem={({item}) => <Item title={item.title} />}
       keyExtractor={item => item.id}
       />
-      <Button
-          title="次へ"
-          onPress={() => navigation.navigate('Job')}
-          style={styles.button}
-          variant="text"
-          // onPress={() => navigation.push('Detail')}
-      />
+      <Button mode="text" onPress={() => navigation.navigate('Job')}>
+        次へ
+      </Button>
     </View>
   );
 }

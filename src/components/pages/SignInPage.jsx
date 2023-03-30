@@ -1,8 +1,8 @@
 import React from 'react';
-import {View, StyleSheet} from 'react-native';
-import { Button } from '@react-native-material/core'
 import CustomText from '@components/atoms/CustomText';
 import CustomTextInput from '@components/atoms/CustomTextInput';
+import {View, StyleSheet} from 'react-native';
+import { Button } from 'react-native-paper';
 
 export default function SignInPage({navigation}) {
     const email = "EMAIL";
@@ -24,16 +24,13 @@ export default function SignInPage({navigation}) {
 
   return (
     <View style={styles.container}>
-        <CustomText title={email}/>
-        <CustomTextInput placeholder={"emailを入力してください。"}/>
-        <CustomText title={password}/>
-        <CustomTextInput placeholder={"passwordを入力してください。"} />
-        <Button
-            title="ログイン"
-            onPress={() => navigation.navigate('JudgeLookPage')}
-            style={styles.button}
-            // onPress={() => navigation.push('Detail')}
-        />
+      <CustomText title={email}/>
+      <CustomTextInput placeholder={"emailを入力してください。"}/>
+      <CustomText title={password}/>
+      <CustomTextInput placeholder={"passwordを入力してください。"} />
+      <Button mode="text" onPress={() => navigation.navigate('JudgeLookPage')}>
+        ログイン
+      </Button>
         
     </View>
   );

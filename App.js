@@ -17,6 +17,7 @@ import OffDay from '@components/pages/SignUp/OffDay';
 import JudgeSelfLook from '@components/pages/JudgeSelfLook';
 import PictureUploadPage from './src/components/pages/PictureUploadPage';
 import Judgefail from './src/components/pages/Judgefail';
+import { Provider } from 'react-native-paper';
 // import {View, Button, Image, StyleSheet, Text} from 'react-native';
 
 export default function App() {
@@ -24,27 +25,28 @@ export default function App() {
   const Stack = createNativeStackNavigator();
   
   return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        {/* <Stack.Screen name="LoadingPage" component={LoadingPage} /> */}
-        <Stack.Screen name="InitialPage" component={InitialPage} />
-        <Stack.Screen name="SignInPage" component={SignInPage} />
-        <Stack.Screen name="Gender" component={Gender} />
-        <Stack.Screen name="Nickname" component={Nickname} />        
-        <Stack.Screen name="BirthDate" component={BirthDate} />
-        <Stack.Screen name="Height" component={Height} />
-        <Stack.Screen name="BodyType" component={BodyType} />
-        <Stack.Screen name="Address" component={Address} />
-        <Stack.Screen name="Job" component={Job} />
-        <Stack.Screen name="AnnualSalary" component={AnnualSalary} />
-        <Stack.Screen name="OffDay" component={OffDay} />
-        <Stack.Screen name="JudgeLookPage" component={JudgeLookPage} />
-        <Stack.Screen name="JudgeSelfLook" component={JudgeSelfLook} />
-        <Stack.Screen name="Judgefail" component={Judgefail} />
-        <Stack.Screen name="PictureUploadPage" component={PictureUploadPage} />
-      </Stack.Navigator>
-    </NavigationContainer>
-    
+    <Provider>
+      <NavigationContainer>
+        <Stack.Navigator>
+          {/* <Stack.Screen name="LoadingPage" component={LoadingPage} /> */}
+          <Stack.Screen name="InitialPage" component={InitialPage} />
+          <Stack.Screen name="SignInPage" component={SignInPage} />
+          <Stack.Screen name="Gender" component={Gender} />
+          <Stack.Screen name="Nickname" component={Nickname} />        
+          <Stack.Screen name="BirthDate" component={BirthDate} />
+          <Stack.Screen name="Height" component={Height} />
+          <Stack.Screen name="BodyType" component={BodyType} />
+          <Stack.Screen name="Address" component={Address} />
+          <Stack.Screen name="Job" component={Job} />
+          <Stack.Screen name="AnnualSalary" component={AnnualSalary} />
+          <Stack.Screen name="OffDay" component={OffDay} />
+          <Stack.Screen name="JudgeLookPage" component={JudgeLookPage} />
+          <Stack.Screen name="JudgeSelfLook" component={JudgeSelfLook} />
+          <Stack.Screen name="Judgefail" component={Judgefail} />
+          <Stack.Screen name="PictureUploadPage" component={PictureUploadPage} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </Provider>
   );
 }
 

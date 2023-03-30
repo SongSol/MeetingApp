@@ -1,6 +1,6 @@
 import React from 'react';
 import {View, StyleSheet, FlatList,} from 'react-native';
-import { Button } from "@react-native-material/core";
+import { Button } from "react-native-paper";
 
 import CustomText from '@components/atoms/CustomText';
 import HeightData from '@assets/signUpDataList/HeightData';
@@ -23,7 +23,9 @@ export default function Height({navigation}) {
 
     const Item = ({title}) => (
       <View style={styles.item}>
-          <Button title={title} variant="text"/>
+        <Button mode="text" onPress={() => navigation.navigate('BodyType')}>
+          {title}
+        </Button>
       </View>
     );
 
@@ -36,13 +38,9 @@ export default function Height({navigation}) {
         renderItem={({item}) => <Item title={item.title} />}
         keyExtractor={item => item.id}
         />
-        <Button
-            title="次へ"
-            onPress={() => navigation.navigate('BodyType')}
-            style={styles.button}
-            variant="text"
-            // onPress={() => navigation.push('Detail')}
-        />
+        <Button mode="text" onPress={() => navigation.navigate('BodyType')}>
+          次へ
+        </Button>
       </View>
   );
 }

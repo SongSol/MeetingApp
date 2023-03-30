@@ -1,9 +1,8 @@
 import React from 'react';
-import {View, StyleSheet, FlatList,} from 'react-native';
-import { Button } from "@react-native-material/core";
-
 import CustomText from '@components/atoms/CustomText';
 import JobList from '@assets/signUpDataList/JobList';
+import {View, StyleSheet, FlatList,} from 'react-native';
+import { Button } from "react-native-paper";
 
 export default function Job({navigation}) {
     const styles = StyleSheet.create({
@@ -22,7 +21,9 @@ export default function Job({navigation}) {
    
     const Item = ({title}) => (
       <View style={styles.item}>
-          <Button title={title} variant="text"/>
+        <Button mode="text" onPress={() => navigation.navigate('AnnualSalary')}>
+          {title}
+        </Button>
       </View>
     );
 
@@ -34,13 +35,9 @@ export default function Job({navigation}) {
       renderItem={({item}) => <Item title={item.title} />}
       keyExtractor={item => item.id}
       />
-      <Button
-          title="次へ"
-          onPress={() => navigation.navigate('AnnualSalary')}
-          style={styles.button}
-          variant="text"
-          // onPress={() => navigation.push('Detail')}
-      />
+      <Button mode="text" onPress={() => navigation.navigate('AnnualSalary')}>
+        次へ
+      </Button>
     </View>
   );
 }
