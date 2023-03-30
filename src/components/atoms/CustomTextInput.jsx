@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { StyleSheet,  } from 'react-native';
 
 import { TextInput } from "react-native-paper";
 
 export default function CustomTextInput({ label, placeholder }) {
-  const [text, setText] = React.useState("");
+  const [text, setText] = useState("");
   const styles = StyleSheet.create({
     TextInput: {
         width: 250,
