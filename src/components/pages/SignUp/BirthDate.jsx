@@ -19,7 +19,7 @@ export default function BirthDate({navigation}) {
     return (
     <View style={styles.container}>
       <CustomText title={bod}/>
-      <CustomTextInput placeholder={"生年月日を入力してください"}/>
+      <CustomTextInput label={bod} placeholder={"生年月日を入力してください"}/>
       <Button mode="text" onPress={() => navigation.navigate('Height')}>
       次へ
       </Button>

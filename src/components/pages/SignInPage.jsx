@@ -25,9 +25,9 @@ export default function SignInPage({navigation}) {
   return (
     <View style={styles.container}>
       <CustomText title={email}/>
-      <CustomTextInput placeholder={"emailを入力してください。"}/>
+      <CustomTextInput label="email" placeholder={"emailを入力してください。"}/>
       <CustomText title={password}/>
-      <CustomTextInput placeholder={"passwordを入力してください。"} />
+      <CustomTextInput label="password" placeholder={"passwordを入力してください。"} />
       <Button mode="text" onPress={() => navigation.navigate('JudgeLookPage')}>
         ログイン
       </Button>

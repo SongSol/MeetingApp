@@ -15,7 +15,7 @@ export default function Nickname({navigation}) {
     
   return (
     <View style={styles.container}>
-      <CustomTextInput placeholder={"ニックネームを入力してください"}/>
+      <CustomTextInput label="nickname" placeholder={"ニックネームを入力してください"}/>
       <Button mode="text" onPress={() => navigation.navigate('BirthDate')}>
         次へ
       </Button>
