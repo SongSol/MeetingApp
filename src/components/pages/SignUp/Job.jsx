@@ -29,7 +29,7 @@ export default function Job({navigation}) {
 
     return (
     <View style={styles.container}>
-      <CustomText title={"どんな仕事していますか"}/>
+      <CustomText text={"どんな仕事していますか"}/>
       <FlatList
       data={JobList()}
       renderItem={({item}) => <Item title={item.title} />}

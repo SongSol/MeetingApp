@@ -32,7 +32,7 @@ export default function AnnualSalary({navigation}) {
 
     return (
       <View style={styles.container}>
-        <CustomText title={"どんな仕事していますか"}/>
+        <CustomText text={"どんな仕事していますか"}/>
         <FlatList
         data={AnnualSalaryData()}
         renderItem={({item}) => <Item title={item.title} />}

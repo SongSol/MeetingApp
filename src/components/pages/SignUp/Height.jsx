@@ -31,7 +31,7 @@ export default function Height({navigation}) {
 
     return (
       <View style={styles.container}>
-        <CustomText title={"身長はいくつですか？"}/>
+        <CustomText text={"身長はいくつですか？"}/>
         
         <FlatList
         data={HeightData()}

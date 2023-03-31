@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text } from 'react-native';
 
-export default function CustomText({ title }) {
+export default function CustomText({ text }) {
   const styles = StyleSheet.create({
     text: {
         width: 150,
@@ -12,7 +12,7 @@ export default function CustomText({ title }) {
 
   return (
     <Text style={styles.text}> 
-      {title}
+      {text}
     </Text>
         
     

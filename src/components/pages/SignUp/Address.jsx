@@ -23,7 +23,7 @@ export default function Address({navigation}) {
 
     const Item = ({title}) => (
       <View style={styles.item}>
-          <Button mode="text" onPress={() => alert('OK')}>
+          <Button mode="text" onPress={() => navigation.navigate('Job')}>
             {title}
           </Button>
       </View>
@@ -31,7 +31,7 @@ export default function Address({navigation}) {
 
     return (
     <View style={styles.container}>
-      <CustomText title={"お住まいはどこですか"}/>
+      <CustomText text={"お住まいはどこですか"}/>
       
       <FlatList
       data={AddressData()}

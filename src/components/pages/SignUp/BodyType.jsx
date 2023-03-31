@@ -29,10 +29,10 @@ export default function Weight({navigation}) {
 
     return (
     <View style={styles.container}>
-      <CustomText title={"どんな体型ですか"}/>
+      <CustomText text={"どんな体型ですか"}/>
       <FlatList
       data={BodyTypeData()}
-      renderItem={({item}) => <Item title={item.title} />}
+      renderItem={({item}) => <Item title={item.title}/>}
       keyExtractor={item => item.id}
       />
       <Button mode="text" onPress={() => navigation.navigate('Address')}>
