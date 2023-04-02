@@ -2,7 +2,7 @@ import React from 'react';
 import { Text, View, StyleSheet, Pressable } from 'react-native';
 import { Button } from 'react-native-paper';
 
-export default function ButtonAtom({ title, type }) {
+export default function ButtonAtom({ title, type, onPress }) {
     const styles = StyleSheet.create({
         button: {
           alignItems: 'center',
@@ -51,25 +51,29 @@ export default function ButtonAtom({ title, type }) {
     switch(type) {
         case 'Long':
             return (
-                <Button style={styles.longbutton} >
+                <Button style={styles.longbutton} 
+                  onPress={onPress}>
                   <Text style={styles.text}>{title}</Text>
                 </Button>
             );
         case 'Middle':
             return (
-                <Button style={styles.middlebutton} >
+                <Button style={styles.middlebutton} 
+                  onPress={onPress}>
                   <Text style={styles.text}>{title}</Text>
                 </Button>
             );
         case 'Small':
             return (
-                <Button style={styles.smallbutton} >
+                <Button style={styles.smallbutton} 
+                  onPress={onPress}>
                   <Text style={styles.text}>{title}</Text>
                 </Button>
             );
         default:
             return (
-                <Button style={styles.button} >
+                <Button style={styles.button} 
+                  onPress={onPress}>
                   <Text style={styles.text}>{title}</Text>
                 </Button>
               );
