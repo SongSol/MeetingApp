@@ -19,12 +19,6 @@ export default function JudgeLookPage({navigation}) {
             borderRadius: 20,
         },
 
-        score_btn: {
-            width: 100,
-            height: 50,
-            margin: 10
-        },
-
         count_judge: {
             textAlign: 'right',
             fontWeight: 800
