@@ -1,7 +1,7 @@
 import React from 'react';
-import {View, StyleSheet, Text } from 'react-native';
+import {View, StyleSheet } from 'react-native';
 import Image from '@components/atoms/Image';
-import { Button } from '@react-native-material/core'
+import Button from '@components/atoms/Button';
 
 const JudgeLookTemplate = props =>  {
     const styles = StyleSheet.create({
@@ -19,8 +19,6 @@ const JudgeLookTemplate = props =>  {
         },
 
         score_btn: {
-            width: 100,
-            height: 50,
             margin: 10
         }
     });
