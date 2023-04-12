@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { StyleSheet,  } from 'react-native';
+import { StyleSheet } from 'react-native';
 
 import { TextInput } from "react-native-paper";
 
-export default function CustomTextInput({ label, placeholder }) {
+export default function TextInputAtom({ label, placeholder }) {
   const [text, setText] = useState("");
   const styles = StyleSheet.create({
     TextInput: {

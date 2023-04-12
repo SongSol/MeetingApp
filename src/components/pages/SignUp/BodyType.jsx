@@ -1,4 +1,5 @@
 import React from 'react';
+import RadioButton from '@components/atoms/RadioButton';
 import CustomText from '@components/atoms/CustomText';
 import BodyTypeData from '@assets/signUpDataList/BodyTypeData';
 import {View, StyleSheet, FlatList,} from 'react-native';
@@ -30,11 +31,7 @@ export default function Weight({navigation}) {
     return (
     <View style={styles.container}>
       <CustomText text={"どんな体型ですか"}/>
-      <FlatList
-      data={BodyTypeData()}
-      renderItem={({item}) => <Item title={item.title}/>}
-      keyExtractor={item => item.id}
-      />
+      <RadioButton items={BodyTypeData()}/>
       <Button mode="text" onPress={() => navigation.navigate('Address')}>
         次へ
       </Button>

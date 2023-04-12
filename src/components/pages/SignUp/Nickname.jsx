@@ -1,7 +1,7 @@
 import React from 'react';
 import {View, StyleSheet} from 'react-native';
-import { Button } from 'react-native-paper';
-import CustomTextInput from '@components/atoms/CustomTextInput';
+import Button from '@components/atoms/Button';
+import TextInput from '@components/atoms/TextInput';
 
 export default function Nickname({navigation}) {
     const styles = StyleSheet.create({
@@ -15,10 +15,8 @@ export default function Nickname({navigation}) {
     
   return (
     <View style={styles.container}>
-      <CustomTextInput label="nickname" placeholder={"ニックネームを入力してください"}/>
-      <Button mode="text" onPress={() => navigation.navigate('BirthDate')}>
-        次へ
-      </Button>
+      <TextInput label="nickname" placeholder={"ニックネームを入力してください"}/>
+      <Button type="long" title="次へ" onPress={() => navigation.navigate('BirthDate')} />
     </View>
   );
 }

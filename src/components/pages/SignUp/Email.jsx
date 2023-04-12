@@ -1,7 +1,7 @@
 import React from 'react';
 import {View, StyleSheet} from 'react-native';
 import { Button } from 'react-native-paper';
-import CustomTextInput from '@components/atoms/CustomTextInput';
+import TextInput from '@components/atoms/TextInput';
 
 export default function Email({navigation}) {
     const styles = StyleSheet.create({
@@ -15,7 +15,7 @@ export default function Email({navigation}) {
     
   return (
     <View style={styles.container}>
-      <CustomTextInput label="Email" placeholder={"Emailを入力してください"}/>
+      <TextInput label="Email" placeholder={"Emailを入力してください"}/>
       <Button mode="text" onPress={() => navigation.navigate('Gender')}>
         次へ
       </Button>

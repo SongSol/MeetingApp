@@ -34,7 +34,7 @@ export default function OffDay({navigation}) {
       renderItem={({item}) => <Item title={item.title} />}
       keyExtractor={item => item.id}
       />
-      <Button mode="text" onPress={() => navigation.navigate('JudgeLookPage')}>
+      <Button mode="text" onPress={() => alert("end!")}>
         次へ
       </Button>
     </View>

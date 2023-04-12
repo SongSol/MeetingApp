@@ -1,6 +1,6 @@
 import React from 'react';
 import CustomText from '@components/atoms/CustomText';
-import CustomTextInput from '@components/atoms/CustomTextInput';
+import TextInput from '@components/atoms/TextInput';
 import {View, StyleSheet} from 'react-native';
 import { Button } from 'react-native-paper';
 
@@ -25,9 +25,9 @@ export default function SignInPage({navigation}) {
   return (
     <View style={styles.container}>
       <CustomText text={email}/>
-      <CustomTextInput label="email" placeholder={"emailを入力してください。"}/>
+      <TextInput label="email" placeholder={"emailを入力してください。"}/>
       <CustomText text={password}/>
-      <CustomTextInput label="password" placeholder={"passwordを入力してください。"} />
+      <TextInput label="password" placeholder={"passwordを入力してください。"} />
       <Button mode="text" onPress={() => navigation.navigate('JudgeLookPage')}>
         ログイン
       </Button>
