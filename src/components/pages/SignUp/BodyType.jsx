@@ -2,8 +2,8 @@ import React from 'react';
 import RadioButton from '@components/atoms/RadioButton';
 import CustomText from '@components/atoms/CustomText';
 import BodyTypeData from '@assets/signUpDataList/BodyTypeData';
-import {View, StyleSheet, FlatList,} from 'react-native';
-import { Button } from "react-native-paper";
+import {View, StyleSheet} from 'react-native';
+import Button from '@components/atoms/Button';
 
 export default function Weight({navigation}) {
     const styles = StyleSheet.create({
@@ -32,9 +32,7 @@ export default function Weight({navigation}) {
     <View style={styles.container}>
       <CustomText text={"どんな体型ですか"}/>
       <RadioButton items={BodyTypeData()}/>
-      <Button mode="text" onPress={() => navigation.navigate('Address')}>
-        次へ
-      </Button>
+      <Button type="long" title="次へ" onPress={() => navigation.navigate('Address')} />
     </View>
   );
 }

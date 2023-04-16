@@ -1,10 +1,9 @@
 import React from 'react';
 import CustomText from '@components/atoms/CustomText';
+import {View, StyleSheet,} from 'react-native';
+import RadioButton from '@components/atoms/RadioButton';
+import Button from '@components/atoms/Button';
 import AnnualSalaryData from '@assets/signUpDataList/AnnualSalaryData';
-import {View, StyleSheet, FlatList,} from 'react-native';
-import { Button } from "react-native-paper";
-
-
 
 export default function AnnualSalary({navigation}) {
     const styles = StyleSheet.create({
@@ -21,26 +20,13 @@ export default function AnnualSalary({navigation}) {
         }
     });
 
-    const Item = ({title}) => (
-      <View style={styles.item}>
-        <Button mode="text" onPress={() => navigation.navigate('OffDay')}>
-          {title}
-        </Button>
-
-      </View>
-    );
-
     return (
       <View style={styles.container}>
         <CustomText text={"どんな仕事していますか"}/>
-        <FlatList
-        data={AnnualSalaryData()}
-        renderItem={({item}) => <Item title={item.title} />}
-        keyExtractor={item => item.id}
-        />
-        <Button mode="text" onPress={() => navigation.navigate('OffDay')}>
-          次へ
-        </Button>
+        
+        <RadioButton items={AnnualSalaryData()}/>
+        <Button type="long" title="次へ" onPress={() => navigation.navigate('OffDay')} />
+
       </View>
   );
 }

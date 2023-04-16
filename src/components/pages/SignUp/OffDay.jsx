@@ -1,9 +1,9 @@
 import React from 'react';
 import CustomText from '@components/atoms/CustomText';
 import OffDayData from '@assets/signUpDataList/OffDayData';
-import {View, StyleSheet, FlatList,} from 'react-native';
-import { Button } from "react-native-paper";
-
+import {View, StyleSheet} from 'react-native';
+import Button from '@components/atoms/Button';
+import RadioButton from '@components/atoms/RadioButton';
 export default function OffDay({navigation}) {
     const styles = StyleSheet.create({
         container: {
@@ -28,15 +28,10 @@ export default function OffDay({navigation}) {
 
     return (
     <View style={styles.container}>
-      <CustomText text={"どんな仕事していますか"}/>
-      <FlatList
-      data={OffDayData()}
-      renderItem={({item}) => <Item title={item.title} />}
-      keyExtractor={item => item.id}
-      />
-      <Button mode="text" onPress={() => alert("end!")}>
-        次へ
-      </Button>
+      <CustomText text={"お休みはいつですか"}/>
+
+      <RadioButton items={OffDayData()}/>
+      <Button type="long" title="次へ" onPress={() => alert("end!")} />
     </View>
   );
 }

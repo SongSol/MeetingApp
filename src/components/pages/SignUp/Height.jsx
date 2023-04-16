@@ -1,7 +1,7 @@
 import React from 'react';
 import {View, StyleSheet, FlatList,} from 'react-native';
-import { Button } from "react-native-paper";
 
+import Button from '@components/atoms/Button';
 import RadioButton from '@components/atoms/RadioButton';
 import CustomText from '@components/atoms/CustomText';
 import HeightData from '@assets/signUpDataList/HeightData';
@@ -22,27 +22,11 @@ export default function Height({navigation}) {
         }
     });
 
-    const Item = ({title}) => (
-      <View style={styles.item}>
-        <Button mode="text" onPress={() => navigation.navigate('BodyType')}>
-          {title}
-        </Button>
-      </View>
-    );
-
     return (
       <View style={styles.container}>
         <CustomText text={"身長はいくつですか？"}/>
-        
-        {/* <FlatList
-        data={HeightData()}
-        renderItem={({item}) => <Item title={item.title} />}
-        keyExtractor={item => item.id}
-        /> */}
         <RadioButton items={HeightData()}/>
-        <Button mode="text" onPress={() => navigation.navigate('BodyType')}>
-          次へ
-        </Button>
+        <Button type="long" title="次へ" onPress={() => navigation.navigate('BodyType')} />
       </View>
   );
 }

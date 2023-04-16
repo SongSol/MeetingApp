@@ -6,9 +6,9 @@ export default function RadioButtonAtom({items}) {
     const [value, setValue] = useState();
     return (
         <RadioButton.Group onValueChange={value => setValue(value)} value={value}>
-            {items.map( item => {
+            {items.map( (item, key) => {
                 return (
-                    <RadioButton.Item label={item} value={item} />
+                    <RadioButton.Item key={key} label={item} value={item} />
                 );
             })}
         </RadioButton.Group>

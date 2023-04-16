@@ -1,10 +1,10 @@
 import React from 'react';
-import {View, StyleSheet, FlatList,} from 'react-native';
-import { Button } from 'react-native-paper';
+import {View, StyleSheet} from 'react-native';
 
+import Button from '@components/atoms/Button';
 import CustomText from '@components/atoms/CustomText';
 import AddressData from '@assets/signUpDataList/AddressData';
-
+import RadioButton from '@components/atoms/RadioButton';
 
 export default function Address({navigation}) {
     const styles = StyleSheet.create({
@@ -21,26 +21,11 @@ export default function Address({navigation}) {
         }
     });
 
-    const Item = ({title}) => (
-      <View style={styles.item}>
-          <Button mode="text" onPress={() => navigation.navigate('Job')}>
-            {title}
-          </Button>
-      </View>
-    );
-
     return (
     <View style={styles.container}>
       <CustomText text={"お住まいはどこですか"}/>
-      
-      <FlatList
-      data={AddressData()}
-      renderItem={({item}) => <Item title={item.title} />}
-      keyExtractor={item => item.id}
-      />
-      <Button mode="text" onPress={() => navigation.navigate('Job')}>
-        次へ
-      </Button>
+      <RadioButton items={AddressData()}/>
+      <Button type="long" title="次へ" onPress={() => navigation.navigate('Job')} />
     </View>
   );
 }
