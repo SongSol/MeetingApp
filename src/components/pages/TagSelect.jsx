@@ -57,13 +57,15 @@ export default function TagSelect({navigation}) {
                 Information
                 </Chip>
             </View>
+            <View style={styles.chip}>
             {Object.keys(tag).map((key) => (
-                <View style={styles.chip}>
+                
                     <Chip icon="heart" mode="outlined" selectedColor="red" onPress={() => console.log(key)}>
                         {tag[key]}
                     </Chip>
-                </View>
+                
             ))}
+            </View>
             {/* <View>
                 {names.map((element, index) => {
                     return (
