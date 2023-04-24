@@ -1,6 +1,6 @@
 import React from 'react';
 import CustomText from '@components/atoms/CustomText';
-import OffDayData from '@assets/signUpDataList/OffDayData';
+import OffDayData from '@assets/SignUpDataList/OffDayData';
 import {View, StyleSheet} from 'react-native';
 import Button from '@components/atoms/Button';
 import RadioButton from '@components/atoms/RadioButton';

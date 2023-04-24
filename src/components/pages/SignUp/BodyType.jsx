@@ -1,7 +1,7 @@
 import React from 'react';
 import RadioButton from '@components/atoms/RadioButton';
 import CustomText from '@components/atoms/CustomText';
-import BodyTypeData from '@assets/signUpDataList/BodyTypeData';
+import BodyTypeData from '@assets/SignUpDataList/BodyTypeData';
 import {View, StyleSheet} from 'react-native';
 import Button from '@components/atoms/Button';
 

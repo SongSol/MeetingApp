@@ -17,9 +17,10 @@ import Job from '@components/pages/SignUp/Job';
 import AnnualSalary from '@components/pages/SignUp/AnnualSalary';
 import OffDay from '@components/pages/SignUp/OffDay';
 import JudgeSelfLook from '@components/pages/JudgeSelfLook';
-import PictureUploadPage from './src/components/pages/PictureUploadPage';
-import Judgefail from './src/components/pages/Judgefail';
+import PictureUploadPage from '@components/pages/PictureUploadPage';
+import Judgefail from '@components/pages/Judgefail';
 import { Provider } from 'react-native-paper';
+import TagSelect from '@components/pages/TagSelect';
 // import {View, Button, Image, StyleSheet, Text} from 'react-native';
 
 export default function App() {
@@ -48,6 +49,7 @@ export default function App() {
           <Stack.Screen name="JudgeSelfLook" component={JudgeSelfLook} />
           <Stack.Screen name="Judgefail" component={Judgefail} />
           <Stack.Screen name="PictureUploadPage" component={PictureUploadPage} />
+          <Stack.Screen name="TagSelect" component={TagSelect} />
         </Stack.Navigator>
       </NavigationContainer>
     </Provider>

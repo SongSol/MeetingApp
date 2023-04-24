@@ -1,8 +1,9 @@
 import React from 'react';
 import CustomText from '@components/atoms/CustomText';
-import JobList from '@assets/signUpDataList/JobList';
+// import color from '@assets/color.json';
+import JobList from '@assets/SignUpDataList/JobList';
 import {View, StyleSheet} from 'react-native';
-import Button from '@components/atoms/Button';
+// import Button from '@components/atoms/Button';
 import RadioButton from '@components/atoms/RadioButton';
 
 export default function Job({navigation}) {

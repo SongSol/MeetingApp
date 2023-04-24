@@ -26,10 +26,13 @@ export default function InitialPage({navigation}) {
                 会員登録
             </Button>
             <Button mode="text" onPress={() => navigation.navigate('PictureUploadPage')}>
-                写真アッポロード
+                写真アップロード
             </Button>
             <Button mode="text" onPress={() => navigation.navigate('Judgefail')}>
                 심사탈락
+            </Button>
+            <Button mode="text" onPress={() => navigation.navigate('TagSelect')}>
+                테그선택
             </Button>
         </View>
     );

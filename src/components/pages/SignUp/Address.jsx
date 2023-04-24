@@ -3,7 +3,7 @@ import {View, StyleSheet} from 'react-native';
 
 import Button from '@components/atoms/Button';
 import CustomText from '@components/atoms/CustomText';
-import AddressData from '@assets/signUpDataList/AddressData';
+import AddressData from '@assets/SignUpDataList/AddressData';
 import RadioButton from '@components/atoms/RadioButton';
 
 export default function Address({navigation}) {
