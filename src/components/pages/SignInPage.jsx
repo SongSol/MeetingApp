@@ -24,18 +24,19 @@ export default function SignInPage({navigation}) {
       }
   });
   
-  const getSignIn = async () => {
+  const getSignIn = async (email, password) => {
     try {
       const response = await axios.get(
         'https://4ay6bv8m9k.execute-api.ap-northeast-1.amazonaws.com/getSignIn'
-        // , {
-        //   params: {
-        //     id: email,
-        //     password: password
-        //   }
-        // }
+        , {
+          params: {
+            "id": email,
+            "password": password
+          }
+        } 
       )
-      console.log(response);
+      console.log(response.data);
+      console.log("API게이트웨이까지 연결확인!");
     } catch(e){
       console.log(e);
     }
@@ -47,7 +48,7 @@ export default function SignInPage({navigation}) {
       <TextInput onChangeText={email => setEmail(email)} label="email" placeholder={"emailを入力してください。" }/>
       <CustomText text={"PASSWORD"}/>
       <TextInput onChangeText={password => setPassword(password)} label="password" placeholder={"passwordを入力してください。"} />
-      <Button type="long" title="ログイン" onPress={() => getSignIn()} />
+      <Button type="long" title="ログイン" onPress={() => getSignIn(email, password)} />
     </View>
   );
 }

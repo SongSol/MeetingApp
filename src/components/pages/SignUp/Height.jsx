@@ -4,7 +4,7 @@ import {View, StyleSheet, FlatList,} from 'react-native';
 import Button from '@components/atoms/Button';
 import RadioButton from '@components/atoms/RadioButton';
 import CustomText from '@components/atoms/CustomText';
-import HeightData from '@assets/SignUpDataList/HeightData';
+import HeightData from '@assets/signUpDataList/HeightData';
 
 
 export default function Height({navigation}) {

@@ -3,7 +3,7 @@ import CustomText from '@components/atoms/CustomText';
 import {View, StyleSheet,} from 'react-native';
 import RadioButton from '@components/atoms/RadioButton';
 import Button from '@components/atoms/Button';
-import AnnualSalaryData from '@assets/SignUpDataList/AnnualSalaryData';
+import AnnualSalaryData from '@assets/signUpDataList/AnnualSalaryData';
 
 export default function AnnualSalary({navigation}) {
     const styles = StyleSheet.create({

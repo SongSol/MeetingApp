@@ -1,7 +1,7 @@
 import React from 'react';
 import CustomText from '@components/atoms/CustomText';
 // import color from '@assets/color.json';
-import JobList from '@assets/SignUpDataList/JobList';
+import JobList from '@assets/signUpDataList/JobList';
 import {View, StyleSheet} from 'react-native';
 // import Button from '@components/atoms/Button';
 import RadioButton from '@components/atoms/RadioButton';
