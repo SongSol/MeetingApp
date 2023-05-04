@@ -1,7 +1,8 @@
 import React from 'react';
 import RadioButton from '@components/atoms/RadioButton';
 import CustomText from '@components/atoms/CustomText';
-import BodyTypeData from '@assets/signUpDataList/BodyTypeData';
+import { ProgressBar, MD3Colors } from 'react-native-paper';
+import BodyTypeData from '@assets/SignUpDataList/BodyTypeData';
 import {View, StyleSheet} from 'react-native';
 import Button from '@components/atoms/Button';
 
@@ -17,6 +18,11 @@ export default function Weight({navigation}) {
             width: 100,
             height: 50,
             margin: 10
+        },
+        progress: {
+          height: 10,
+          width:undefined,
+          backgroundColor: '#eee',
         }
     });
     
@@ -29,10 +35,13 @@ export default function Weight({navigation}) {
     );
 
     return (
-    <View style={styles.container}>
-      <CustomText text={"どんな体型ですか"}/>
-      <RadioButton items={BodyTypeData()}/>
-      <Button type="long" title="次へ" onPress={() => navigation.navigate('Address')} />
-    </View>
+      <View style={{ flex: 1 }}>
+        <ProgressBar progress={0.5} style={styles.progress} color={MD3Colors.error50} />
+        <View style={styles.container}>
+          <CustomText text={"どんな体型ですか"}/>
+          <RadioButton items={BodyTypeData()}/>
+          <Button type="long" title="次へ" onPress={() => navigation.navigate('Address')} />
+        </View>
+      </View>
   );
 }

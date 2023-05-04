@@ -1,6 +1,12 @@
-import React from 'react';
+import * as React from 'react';
 import {View, StyleSheet } from 'react-native';
-import { Button } from 'react-native-paper';
+import { Button, BottomNavigation } from 'react-native-paper';
+
+import SignInPage from './SignInPage';
+import TagSelect from './TagSelect';
+import PictureUploadPage from './PictureUploadPage';
+import Judgefail from './Judgefail';
+
 
 export default function InitialPage({navigation}) {
 
@@ -15,25 +21,51 @@ export default function InitialPage({navigation}) {
             width: 200,
             height: 50,
             margin: 10,
+        },
+        bottombar: {
+          backgroundColor: '#eee',
         }
       });
+
+    const [index, setIndex] = React.useState(0);  
+
+    const [routes] = React.useState([
+        {key: 'SignInPage', title: 'ログイン' ,icon: 'queue-music', color: '#000000'},
+        {key: 'TagSelect', title: 'カテゴリ', icon: 'album', color: '#009688'},
+        {key: 'Email', title: '写真', icon: 'history'},
+        {key: 'Nickname', title:'審査', icon: 'shopping-cart'},
+    ])
+
+    const renderScene = BottomNavigation.SceneMap({
+        SignInPage: SignInPage,
+        TagSelect: TagSelect,
+        Email: PictureUploadPage,
+        Nickname: Judgefail
+    })
+
     return (
-        <View style={styles.container}>
-            <Button mode="text" onPress={() => navigation.navigate('SignInPage')}>
-                ログイン
-            </Button>
-            <Button mode="text" onPress={() => navigation.navigate('Phone')}>
-                会員登録
-            </Button>
-            <Button mode="text" onPress={() => navigation.navigate('PictureUploadPage')}>
-                写真アップロード
-            </Button>
-            <Button mode="text" onPress={() => navigation.navigate('Judgefail')}>
-                심사탈락
-            </Button>
-            <Button mode="text" onPress={() => navigation.navigate('TagSelect')}>
-                테그선택
-            </Button>
+        <View style={{ flex: 1 }}>
+            <View style={styles.container}>
+                <Button mode="text" onPress={() => navigation.navigate('SignInPage')}>
+                    ログイン
+                </Button>
+                <Button mode="text" onPress={() => navigation.navigate('Phone')}>
+                    会員登録
+                </Button>
+                <Button mode="text" onPress={() => navigation.navigate('PictureUploadPage')}>
+                    写真アップロード
+                </Button>
+                <Button mode="text" onPress={() => navigation.navigate('Judgefail')}>
+                    심사탈락
+                </Button>
+                <Button mode="text" onPress={() => navigation.navigate('TagSelect')}>
+                    테그선택
+                </Button>
+                <Button mode="text" onPress={() => navigation.navigate('BottomNavigation')}>
+                    푸터
+                </Button>
+            </View>
+            {/* <BottomNavigation barStyle={styles.bottombar} activeColor="#6200ee" navigationState={{index, routes}} onIndexChange={setIndex} renderScene={renderScene}/> */}
         </View>
     );
 }

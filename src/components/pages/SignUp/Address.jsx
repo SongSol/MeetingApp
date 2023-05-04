@@ -1,5 +1,6 @@
 import React from 'react';
 import {View, StyleSheet} from 'react-native';
+import { ProgressBar, MD3Colors } from 'react-native-paper';
 
 import Button from '@components/atoms/Button';
 import CustomText from '@components/atoms/CustomText';
@@ -18,14 +19,22 @@ export default function Address({navigation}) {
             width: 100,
             height: 50,
             margin: 10
+        },
+        progress: {
+          height: 10,
+          width:undefined,
+          backgroundColor: '#eee',
         }
     });
 
     return (
-    <View style={styles.container}>
-      <CustomText text={"お住まいはどこですか"}/>
-      <RadioButton items={AddressData()}/>
-      <Button type="long" title="次へ" onPress={() => navigation.navigate('Job')} />
-    </View>
+      <View style={{ flex: 1 }}>
+        <ProgressBar progress={0.6} style={styles.progress} color={MD3Colors.error50} />
+        <View style={styles.container}>
+          <CustomText text={"お住まいはどこですか"}/>
+          <RadioButton items={AddressData()}/>
+          <Button type="long" title="次へ" onPress={() => navigation.navigate('Job')} />
+        </View>
+      </View>
   );
 }

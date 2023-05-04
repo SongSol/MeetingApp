@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
+
 import CustomText from '@components/atoms/CustomText';
 import TextInput from '@components/atoms/TextInput';
 import {View, StyleSheet} from 'react-native';
 import Button from '@components/atoms/Button';
+// import Button from 'react-native-paper';
 import axios from 'axios';
+import Email from './SignUp/Email';
 
 export default function SignInPage({navigation}) {
 
@@ -16,11 +19,6 @@ export default function SignInPage({navigation}) {
         backgroundColor: '#fff',
         alignItems: 'center',
         justifyContent: 'center',
-      },
-      button: {
-        width: 200,
-        height: 50,
-        margin: 20,
       }
   });
   
