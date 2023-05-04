@@ -6,7 +6,6 @@ import {View, StyleSheet} from 'react-native';
 import Button from '@components/atoms/Button';
 // import Button from 'react-native-paper';
 import axios from 'axios';
-import Email from './SignUp/Email';
 
 export default function SignInPage({navigation}) {
 
@@ -23,19 +22,17 @@ export default function SignInPage({navigation}) {
   });
   
   const getSignIn = async (email, password) => {
-    try {
-      const response = await axios.get(
-        'https://4ay6bv8m9k.execute-api.ap-northeast-1.amazonaws.com/getSignIn'
+    try { 
+      const response = await axios.post(
+        'https://gbp4u8anb3.execute-api.ap-northeast-1.amazonaws.com/User'
         , {
-          params: {
-            "id": email,
-            "password": password
-          }
+          email: email,
+          password : password
         } 
       )
-      console.log(response.data);
-      console.log("API게이트웨이까지 연결확인!");
+      response.data == 1 ? navigation.navigate('MainPage') : alert("login失敗");
     } catch(e){
+        alert("login失敗");
       console.log(e);
     }
   }
@@ -43,9 +40,17 @@ export default function SignInPage({navigation}) {
   return (
     <View style={styles.container}>
       <CustomText text={"EMAIL"}/>
-      <TextInput onChangeText={email => setEmail(email)} label="email" placeholder={"emailを入力してください。" }/>
+      <TextInput 
+        value={email}
+        onChangeText={setEmail} 
+        label="email" 
+        placeholder={"emailを入力してください。" }
+      />
       <CustomText text={"PASSWORD"}/>
-      <TextInput onChangeText={password => setPassword(password)} label="password" placeholder={"passwordを入力してください。"} />
+      <TextInput 
+        onChangeText={setPassword} 
+        label="password" 
+        placeholder={"passwordを入力してください。"} />
       <Button type="long" title="ログイン" onPress={() => getSignIn(email, password)} />
     </View>
   );

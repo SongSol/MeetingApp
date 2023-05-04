@@ -21,7 +21,8 @@ import PictureUploadPage from '@components/pages/PictureUploadPage';
 import Judgefail from '@components/pages/Judgefail';
 import { Provider } from 'react-native-paper';
 import TagSelect from '@components/pages/TagSelect';
-import BottomNavigation from '@components/pages/BottomNavigation';
+import MainPage from '@components/pages/MainPage';
+// import BottomNavigation from '@components/pages/BottomNavigation';
 // import {View, Button, Image, StyleSheet, Text} from 'react-native';
 
 export default function App() {
@@ -51,7 +52,8 @@ export default function App() {
           <Stack.Screen name="Judgefail" component={Judgefail} />
           <Stack.Screen name="PictureUploadPage" component={PictureUploadPage} />
           <Stack.Screen name="TagSelect" component={TagSelect} />
-          <Stack.Screen name="BottomNavigation" component={BottomNavigation} />
+          <Stack.Screen name="MainPage" component={MainPage} />
+          {/* <Stack.Screen name="BottomNavigation" component={BottomNavigation} /> */}
         </Stack.Navigator>
       </NavigationContainer>
     </Provider>
