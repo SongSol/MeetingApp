@@ -1,4 +1,4 @@
-import React from 'react';
+import { useContext, useState } from 'react';
 import CustomText from '@components/atoms/CustomText';
 // import color from '@assets/color.json';
 import JobList from '@assets/signUpDataList/JobList';
@@ -7,6 +7,7 @@ import Button from '@components/atoms/Button';
 // import Button from '@components/atoms/Button';
 import RadioButton from '@components/atoms/RadioButton';
 import { ProgressBar, MD3Colors } from 'react-native-paper';
+import AppContext from '@components/atoms/AppContext';
 
 export default function Job({navigation}) {
     const styles = StyleSheet.create({
@@ -27,13 +28,28 @@ export default function Job({navigation}) {
           backgroundColor: '#eee',
         }
     });
+
+    const [job, setJob] = useState();
+    const myContext = useContext(AppContext);
+
     return (
       <View style={{ flex: 1 }}>
         <ProgressBar progress={0.7} style={styles.progress} color={MD3Colors.error50} />
         <View style={styles.container}>
-          <CustomText text={"どんな仕事していますか"}/>
-          <RadioButton items={JobList()}/>
-          <Button type="long" title="次へ" onPress={() => navigation.navigate('AnnualSalary')} />
+          <CustomText text="どんな仕事していますか" />
+          <RadioButton 
+            items={JobList()}
+            value={job}
+            setValue={setJob}
+          />
+          <Button 
+            type="long" 
+            title="次へ" 
+            onPress={() => {
+              myContext.job = job;
+              navigation.navigate('AnnualSalary');
+            }} 
+          />
         </View>
       </View>
   );

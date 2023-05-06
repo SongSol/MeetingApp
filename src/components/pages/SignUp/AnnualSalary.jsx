@@ -1,10 +1,11 @@
-import React from 'react';
+import { useContext, useState } from 'react';
 import CustomText from '@components/atoms/CustomText';
 import {View, StyleSheet,} from 'react-native';
 import RadioButton from '@components/atoms/RadioButton';
 import { ProgressBar, MD3Colors } from 'react-native-paper';
 import Button from '@components/atoms/Button';
 import AnnualSalaryData from '@assets/signUpDataList/AnnualSalaryData';
+import AppContext from '@components/atoms/AppContext';
 
 export default function AnnualSalary({navigation}) {
     const styles = StyleSheet.create({
@@ -26,13 +27,27 @@ export default function AnnualSalary({navigation}) {
         }
     });
 
+    const [annualsalary, setAnnualsalary] = useState();
+    const myContext = useContext(AppContext);
+
     return (
       <View style={{ flex: 1 }}>
         <ProgressBar progress={0.8} style={styles.progress} color={MD3Colors.error50} />
         <View style={styles.container}>
-          <CustomText text={"どんな仕事していますか"}/>
-          <RadioButton items={AnnualSalaryData()}/>
-          <Button type="long" title="次へ" onPress={() => navigation.navigate('OffDay')} />
+          <CustomText text="年収はどれぐらいですか" />
+          <RadioButton
+            items={AnnualSalaryData()}
+            value={annualsalary}
+            setValue={setAnnualsalary}
+          />
+          <Button 
+            type="long" 
+            title="次へ" 
+            onPress={() => {
+              myContext.annualsalary = annualsalary;
+              navigation.navigate('OffDay');
+            }} 
+          />
         </View>
       </View>
   );

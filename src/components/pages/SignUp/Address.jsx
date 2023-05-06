@@ -1,4 +1,4 @@
-import React from 'react';
+import { useContext, useState } from 'react';
 import {View, StyleSheet} from 'react-native';
 import { ProgressBar, MD3Colors } from 'react-native-paper';
 
@@ -6,6 +6,7 @@ import Button from '@components/atoms/Button';
 import CustomText from '@components/atoms/CustomText';
 import AddressData from '@assets/signUpDataList/AddressData';
 import RadioButton from '@components/atoms/RadioButton';
+import AppContext from '@components/atoms/AppContext';
 
 export default function Address({navigation}) {
     const styles = StyleSheet.create({
@@ -27,13 +28,27 @@ export default function Address({navigation}) {
         }
     });
 
+    const [address, setAddress] = useState();
+    const myContext = useContext(AppContext);
+
     return (
       <View style={{ flex: 1 }}>
         <ProgressBar progress={0.6} style={styles.progress} color={MD3Colors.error50} />
         <View style={styles.container}>
-          <CustomText text={"お住まいはどこですか"}/>
-          <RadioButton items={AddressData()}/>
-          <Button type="long" title="次へ" onPress={() => navigation.navigate('Job')} />
+          <CustomText text="お住まいはどこですか" />
+          <RadioButton 
+            items={AddressData()}
+            value={address}
+            setValue={setAddress}
+          />
+          <Button 
+            type="long" 
+            title="次へ" 
+            onPress={() => {
+              myContext.address = address;
+              navigation.navigate('Job')
+            }} 
+          />
         </View>
       </View>
   );

@@ -1,12 +1,12 @@
-import React from 'react';
-import {View, StyleSheet, FlatList,} from 'react-native';
+import { useEffect, useContext, useState } from 'react';
+import {View, StyleSheet} from 'react-native';
 import { ProgressBar, MD3Colors } from 'react-native-paper';
 
 import Button from '@components/atoms/Button';
 import RadioButton from '@components/atoms/RadioButton';
 import CustomText from '@components/atoms/CustomText';
 import HeightData from '@assets/signUpDataList/HeightData';
-
+import AppContext from '@components/atoms/AppContext';
 
 export default function Height({navigation}) {
     const styles = StyleSheet.create({
@@ -27,14 +27,28 @@ export default function Height({navigation}) {
           backgroundColor: '#eee',
         }
     });
-
+    const myContext = useContext(AppContext);
+    const [height, setHeight] = useState(''); 
+    useEffect(() => {
+      // console.log(myContext);
+    },[]);
     return (
       <View style={{ flex: 1 }}>
         <ProgressBar progress={0.4} style={styles.progress} color={MD3Colors.error50} />
         <View style={styles.container}>
-          <CustomText text={"身長はいくつですか？"}/>
-          <RadioButton items={HeightData()}/>
-          <Button type="long" title="次へ" onPress={() => navigation.navigate('BodyType')} />
+          <CustomText text="身長はいくつですか？"/>
+          <RadioButton 
+            items={HeightData()} 
+            value={height} 
+            setValue={setHeight}/>
+          <Button 
+            type="long" 
+            title="次へ" 
+            onPress={() => {
+              myContext.height = height;
+              navigation.navigate('BodyType')
+              }} 
+          />
         </View>
       </View>
   );

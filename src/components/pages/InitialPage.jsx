@@ -11,11 +11,11 @@ import Judgefail from './Judgefail';
 export default function InitialPage({navigation}) {
 
     const styles = StyleSheet.create({
-        container: {
-          flex: 1,
-          backgroundColor: '#fff',
-          alignItems: 'center',
-          justifyContent: 'center',
+        container: {  
+            flex: 1,
+            backgroundColor: '#fff',
+            alignItems: 'center',
+            justifyContent: 'center',
         },
         button: {
             width: 200,
@@ -23,11 +23,11 @@ export default function InitialPage({navigation}) {
             margin: 10,
         },
         bottombar: {
-          backgroundColor: '#eee',
+            backgroundColor: '#eee',
         }
       });
 
-    const [index, setIndex] = React.useState(0);  
+    const [index, setIndex] = React.useState(0); 
 
     const [routes] = React.useState([
         {key: 'SignInPage', title: 'ログイン' ,icon: 'queue-music', color: '#000000'},
