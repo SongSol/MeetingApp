@@ -44,28 +44,28 @@ export default function InitialPage({navigation}) {
     })
 
     return (
-        <View style={{ flex: 1 }}>
-            <View style={styles.container}>
-                <Button mode="text" onPress={() => navigation.navigate('SignInPage')}>
-                    ログイン
-                </Button>
-                <Button mode="text" onPress={() => navigation.navigate('Phone')}>
-                    会員登録
-                </Button>
-                <Button mode="text" onPress={() => navigation.navigate('PictureUploadPage')}>
-                    写真アップロード
-                </Button>
-                <Button mode="text" onPress={() => navigation.navigate('Judgefail')}>
-                    심사탈락
-                </Button>
-                <Button mode="text" onPress={() => navigation.navigate('TagSelect')}>
-                    테그선택
-                </Button>
-                <Button mode="text" onPress={() => navigation.navigate('BottomNavigation')}>
-                    푸터
-                </Button>
-            </View>
-            {/* <BottomNavigation barStyle={styles.bottombar} activeColor="#6200ee" navigationState={{index, routes}} onIndexChange={setIndex} renderScene={renderScene}/> */}
+        <View style={styles.container}>
+            <Button mode="text" onPress={() => navigation.navigate('SignInPage')}>
+                ログイン
+            </Button>
+            <Button mode="text" onPress={() => navigation.navigate('Phone')}>
+                会員登録
+            </Button>
+            <Button mode="text" onPress={() => navigation.navigate('PictureUploadPage')}>
+                写真アップロード
+            </Button>
+            <Button mode="text" onPress={() => navigation.navigate('Judgefail')}>
+                심사탈락
+            </Button>
+            <Button mode="text" onPress={() => navigation.navigate('TagSelect')}>
+                테그선택
+            </Button>
+            <Button mode="text" onPress={() => navigation.navigate('JudgeLookPage')}>
+                심사페이지
+            </Button>
+            <Button mode="text" onPress={() => navigation.navigate('JudgeSelfLook')}>
+                자기얼굴평가
+            </Button>
         </View>
     );
 }

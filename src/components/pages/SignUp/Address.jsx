@@ -4,7 +4,7 @@ import { ProgressBar, MD3Colors } from 'react-native-paper';
 
 import Button from '@components/atoms/Button';
 import CustomText from '@components/atoms/CustomText';
-import AddressData from '@assets/signUpDataList/AddressData';
+import AddressData from '@assets/SignUpDataList/AddressData';
 import RadioButton from '@components/atoms/RadioButton';
 import AppContext from '@components/atoms/AppContext';
 
