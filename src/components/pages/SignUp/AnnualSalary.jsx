@@ -5,7 +5,7 @@ import RadioButton from '@components/atoms/RadioButton';
 import { ProgressBar, MD3Colors } from 'react-native-paper';
 import Button from '@components/atoms/Button';
 import AppContext from '@components/atoms/AppContext';
-import AnnualSalaryData from '@assets/SignUpDataList/AnnualSalaryData';
+import AnnualSalaryData from '@assets/signUpDataList/AnnualSalaryData';
 
 export default function AnnualSalary({navigation}) {
     const styles = StyleSheet.create({

@@ -1,5 +1,5 @@
 import { useContext, useState } from 'react';
-import { View, StyleSheet, Text } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import { ProgressBar, MD3Colors } from 'react-native-paper';
 
 import Button from '@components/atoms/Button';

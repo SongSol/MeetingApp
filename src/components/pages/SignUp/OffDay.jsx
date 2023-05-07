@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from 'react';
 import CustomText from '@components/atoms/CustomText';
-import OffDayData from '@assets/SignUpDataList/OffDayData';
+import OffDayData from '@assets/signUpDataList/OffDayData';
 import {View, StyleSheet} from 'react-native';
 import Button from '@components/atoms/Button';
 import { ProgressBar, MD3Colors } from 'react-native-paper';

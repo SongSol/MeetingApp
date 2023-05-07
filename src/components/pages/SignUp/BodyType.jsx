@@ -2,7 +2,7 @@ import { useContext, useState } from 'react';
 import RadioButton from '@components/atoms/RadioButton';
 import CustomText from '@components/atoms/CustomText';
 import { ProgressBar, MD3Colors } from 'react-native-paper';
-import BodyTypeData from '@assets/SignUpDataList/BodyTypeData';
+import BodyTypeData from '@assets/signUpDataList/BodyTypeData';
 import {View, StyleSheet} from 'react-native';
 import Button from '@components/atoms/Button';
 import AppContext from '@components/atoms/AppContext';
