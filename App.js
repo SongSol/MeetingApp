@@ -7,6 +7,7 @@ import InitialPage from '@components/pages/InitialPage';
 import JudgeLookPage from '@components/pages/JudgeLookPage';
 import Phone from '@components/pages/SignUp/Phone';
 import Email from '@components/pages/SignUp/Email';
+import Password from '@components/pages/SignUp/Password';
 import Gender from '@components/pages/SignUp/Gender';
 import Nickname from '@components/pages/SignUp/Nickname';
 import BirthDate from '@components/pages/SignUp/BirthDate';
@@ -32,6 +33,7 @@ export default function App() {
   const signUpInfo = {
     phone: '',
     email: '',
+    password: '',
     gender: '',
     nickname: '',
     birthdate: '',
@@ -52,6 +54,7 @@ export default function App() {
             <Stack.Screen name="SignInPage" component={SignInPage} />
             <Stack.Screen name="Phone" component={Phone} />
             <Stack.Screen name="Email" component={Email} />
+            <Stack.Screen name="Password" component={Password} />
             <Stack.Screen name="Gender" component={Gender} />
             <Stack.Screen name="Nickname" component={Nickname} />        
             <Stack.Screen name="BirthDate" component={BirthDate} />

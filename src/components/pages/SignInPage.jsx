@@ -21,11 +21,12 @@ export default function SignInPage({navigation}) {
       }
   });
   
-  const getSignIn = async (email, password) => {
+  const postSignIn = async (email, password) => {
     try { 
       const response = await axios.post(
         'https://gbp4u8anb3.execute-api.ap-northeast-1.amazonaws.com/User'
         , {
+          what: "signin",
           email: email,
           password : password
         } 
@@ -52,7 +53,7 @@ export default function SignInPage({navigation}) {
         label="password" 
         placeholder="passwordを入力してください。" 
       />
-      <Button type="long" title="ログイン" onPress={() => getSignIn(email, password)} />
+      <Button type="long" title="ログイン" onPress={() => postSignIn(email, password)} />
     </View>
   );
 }

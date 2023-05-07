@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { RadioButton } from 'react-native-paper';
 
 export default function RadioButtonAtom({items, value, setValue}) {
-   
+
     return (
         <RadioButton.Group onValueChange={value => setValue(value)} value={value}>
             {items.map( (item, key) => {
