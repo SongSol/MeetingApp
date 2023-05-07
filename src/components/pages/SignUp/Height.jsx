@@ -5,8 +5,9 @@ import { ProgressBar, MD3Colors } from 'react-native-paper';
 import Button from '@components/atoms/Button';
 import RadioButton from '@components/atoms/RadioButton';
 import CustomText from '@components/atoms/CustomText';
-import HeightData from '@assets/signUpDataList/HeightData';
 import AppContext from '@components/atoms/AppContext';
+import HeightData from '@assets/SignUpDataList/HeightData';
+
 
 export default function Height({navigation}) {
     const styles = StyleSheet.create({
