@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { View, StyleSheet } from 'react-native';
-import { Chip, BottomNavigation, Text} from 'react-native-paper';
+import { Chip, Text} from 'react-native-paper';
 import axios from 'axios';
 
 
@@ -31,38 +31,56 @@ export default function TagSelect({navigation}) {
             marginTop: 50,
             marginLeft: 140,
             alignItems: 'center',
-        },
-        barStyle: {
-            paddingBottom: 48,
-            height: 50,
         }
     });
 
-    const tag = {
-        1: "movie",
-        2: "sports",
-        3: "cooking",
-        4: "game",
-        5: "cleaning",
-        6: "TV",
-        7: "books",
-        8: "shopping",
-        9: "coding",
-        10: "work"
-    }
+    // const tag = {
+    //     1: "movie",
+    //     2: "sports",
+    //     3: "cooking",
+    //     4: "game",
+    //     5: "cleaning",
+    //     6: "TV",
+    //     7: "books",
+    //     8: "shopping",
+    //     9: "coding",
+    //     10: "work"
+    // }
 
-    const getCategory = async () => {
+    const tags = {}
+
+    const [data, setData] = useState(null);
+    const [isLoading, setIsLoading] = useState(true);
+
+    useEffect(() => {
+        const fetchData = async () => {
         try {
-          const response = await axios.get(
-            'https://q1nnafsjxe.execute-api.ap-northeast-1.amazonaws.com/getCategory'
-            , {} 
-          )
-          console.log(response.data['body'][0]);
-          console.log("결과값 확인");
-        } catch(e){
-          console.log(e);
+            const response = await axios.get('https://q1nnafsjxe.execute-api.ap-northeast-1.amazonaws.com/getCategory');
+            setData(response.data['body']);
+            setIsLoading(false);
+        } catch (error) {
+            console.error(error);
+            setIsLoading(false);
         }
-      }
+        };
+
+        fetchData();
+    }, []);
+
+    isLoading ? (
+        console.log("loading....")
+      ) : (
+          data.length > 0 ? (
+            // console.log(data)
+            data.map(array => (
+                // console.log(array)
+                tags[array["id"]] = array["title"]
+            ))
+          ) : (
+            console.log("No data available")
+          )
+    )
+    console.log(tags)
 
     const [selectedChips, setSelectedChips] = useState([]);
 
@@ -76,43 +94,23 @@ export default function TagSelect({navigation}) {
         });
     }
 
-    const MusicRoute = () => <Text>Music</Text>
-    const AlbumsRoute = () => <Text>Albums</Text>
-    const RecentsRoute = () => <Text>Recents</Text>
-
-    const [index, setIndex] = React.useState(0);
-    const [routes] = React.useState([
-        {key: 'music', title: 'Music', icon: 'queue-music', color: '#3F51B5'},
-        {key: 'albums', title: 'Albums', icon: 'album', color: '#009688'},
-        {key: 'recents', title: 'Recents', icon: 'history', color: '#795548'},
-        {key: 'purchased', title:'Purchased', icon: 'shopping-cart', color: '#607D8B'},
-    ])
-
-    const renderScene = BottomNavigation.SceneMap({
-        music: MusicRoute,
-        albums: AlbumsRoute,
-        recents: RecentsRoute,
-    })
-
     return (
         <View>
             <View style={styles.row}>
                 {selectedChips.length < 3 && (
                     <Text style={styles.warning}>⚠️ 少なくとも３個以上のタグを選択してください ⚠️</Text>
                 )}
-                {Object.keys(tag).map((key) => (
+                {Object.keys(tags).map((key) => (
                     <Chip key={key} onPress={() => handleChipPress(key)} selected={selectedChips.includes(key)} style={styles.chip}>
-                        {tag[key]}
+                        {tags[key]}
                     </Chip>
                  ))}
             </View>
             <View>
-                {/* <Chip onPress={() => console.log(selectedChips)} style={styles.button} mode="outlined"> */}
-                <Chip onPress={() => getCategory()} style={styles.button} mode="outlined">
+                <Chip onPress={() => console.log(selectedChips)} style={styles.button} mode="outlined">
                     次へ
                 </Chip>
             </View>
-            {/* <BottomNavigation navigationState={{index, routes}} onIndexChange={setIndex} renderScene={renderScene} /> */}
         </View>
     );
 }

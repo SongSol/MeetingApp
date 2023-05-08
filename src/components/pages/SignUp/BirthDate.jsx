@@ -16,6 +16,7 @@ export default function BirthDate({navigation}) {
         progress: {
           height: 10,
           width:undefined,
+          // backgroundImage: 'linear-gradient(to right, #FF0000, #00FF00)'
           backgroundColor: '#eee',
         }
     });

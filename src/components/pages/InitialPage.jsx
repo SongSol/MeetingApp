@@ -1,11 +1,6 @@
 import * as React from 'react';
 import {View, StyleSheet } from 'react-native';
-import { Button, BottomNavigation } from 'react-native-paper';
-
-import SignInPage from './SignInPage';
-import TagSelect from './TagSelect';
-import PictureUploadPage from './PictureUploadPage';
-import Judgefail from './Judgefail';
+import { Button } from 'react-native-paper';
 
 
 export default function InitialPage({navigation}) {
@@ -21,27 +16,9 @@ export default function InitialPage({navigation}) {
             width: 200,
             height: 50,
             margin: 10,
-        },
-        bottombar: {
-            backgroundColor: '#eee',
         }
       });
 
-    const [index, setIndex] = React.useState(0); 
-
-    const [routes] = React.useState([
-        {key: 'SignInPage', title: 'ログイン' ,icon: 'queue-music', color: '#000000'},
-        {key: 'TagSelect', title: 'カテゴリ', icon: 'album', color: '#009688'},
-        {key: 'Email', title: '写真', icon: 'history'},
-        {key: 'Nickname', title:'審査', icon: 'shopping-cart'},
-    ])
-
-    const renderScene = BottomNavigation.SceneMap({
-        SignInPage: SignInPage,
-        TagSelect: TagSelect,
-        Email: PictureUploadPage,
-        Nickname: Judgefail
-    })
 
     return (
         <View style={styles.container}>
@@ -65,6 +42,9 @@ export default function InitialPage({navigation}) {
             </Button>
             <Button mode="text" onPress={() => navigation.navigate('JudgeSelfLook')}>
                 자기얼굴평가
+            </Button>
+            <Button mode="text" onPress={() => navigation.navigate('BottomNavigation')}>
+                    푸터
             </Button>
         </View>
     );
