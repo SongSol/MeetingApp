@@ -26,7 +26,7 @@ export default function InitialPage({navigation}) {
                 会員登録
             </Button>
             <Button mode="text" onPress={() => navigation.navigate('PictureUploadPage')}>
-                写真アップロード
+                写真Upload
             </Button>
             <Button mode="text" onPress={() => navigation.navigate('Judgefail')}>
                 심사탈락

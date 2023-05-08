@@ -52,7 +52,7 @@ export default function ButtonAtom({ title, type, onPress }) {
         case 'Long':
             return (
                 <Button style={styles.longbutton} 
-                  onPress={onPress}>
+                  onPress={onPress} icon="camera">
                   <Text style={styles.text}>{title}</Text>
                 </Button>
             );
@@ -73,7 +73,7 @@ export default function ButtonAtom({ title, type, onPress }) {
         default:
             return (
                 <Button style={styles.button} 
-                  onPress={onPress}>
+                  onPress={onPress} >
                   <Text style={styles.text}>{title}</Text>
                 </Button>
               );
