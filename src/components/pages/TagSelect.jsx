@@ -1,80 +1,116 @@
-import React from 'react';
-import { View, StyleSheet, Alert } from 'react-native';
-import { Chip } from 'react-native-paper';
-import { useState } from 'react';
-
+import React, { useState, useEffect } from 'react';
+import { View, StyleSheet } from 'react-native';
+import { Chip, Text} from 'react-native-paper';
+import axios from 'axios';
 
 
 export default function TagSelect({navigation}) {
     const styles = StyleSheet.create({
         chip: {
+            justifyContent: 'center',
+            margin:4,
+            marginBottom: 10,
+        },
+        row: {
             display: "inline-block",
             flexDirection: 'row',
-            // alignItems: 'center',
-            justifyContent: 'center',
-            // flexWrap: "wrap",
-            // marginRight: "4",
-            width: 120,
-            marginLeft: 20,
+            flexWrap: 'wrap',
+            paddingHorizontal: 12,
             marginTop: 10,
             marginBottom: 10,
-            backgroundColor: '#ddd',
-            // display: 'inline-block', 
-            // marginRight: '8%'
         },
-        container: {
-            flex: 1,
-            backgroundColor: '#fff',
+        warning: {
+            color: 'red', 
+            fontSize:15, 
+            fontWeight:'bold',
+            marginBottom: 10,
+        },
+        button:{
+            width: 100,
+            height: 50,
+            marginTop: 50,
+            marginLeft: 140,
             alignItems: 'center',
-            justifyContent: 'center',
-        },
+        }
     });
 
-    const tag = {
-        1: "movie",
-        2: "sports",
-        3: "cooking",
-        4: "game",
-        5: "cleaning"
-    }
-    
-    // const selectedTag = ["1"]
-
-    // const [names, setNames] = useState(['Alice', 'Bob']);
-
-    // const handleClick = () => {
-    //     setNames(current => [...current, 'Carl']);
+    // const tag = {
+    //     1: "movie",
+    //     2: "sports",
+    //     3: "cooking",
+    //     4: "game",
+    //     5: "cleaning",
+    //     6: "TV",
+    //     7: "books",
+    //     8: "shopping",
+    //     9: "coding",
+    //     10: "work"
     // }
 
+    const tags = {}
+
+    const [data, setData] = useState(null);
+    const [isLoading, setIsLoading] = useState(true);
+
+    useEffect(() => {
+        const fetchData = async () => {
+        try {
+            const response = await axios.get('https://q1nnafsjxe.execute-api.ap-northeast-1.amazonaws.com/getCategory');
+            setData(response.data['body']);
+            setIsLoading(false);
+        } catch (error) {
+            console.error(error);
+            setIsLoading(false);
+        }
+        };
+
+        fetchData();
+    }, []);
+
+    isLoading ? (
+        console.log("loading....")
+      ) : (
+          data.length > 0 ? (
+            // console.log(data)
+            data.map(array => (
+                // console.log(array)
+                tags[array["id"]] = array["title"]
+            ))
+          ) : (
+            console.log("No data available")
+          )
+    )
+    console.log(tags)
+
+    const [selectedChips, setSelectedChips] = useState([]);
+
+    function handleChipPress(chipLabel) {
+        setSelectedChips(prevSelectedChips => {
+            if (prevSelectedChips.includes(chipLabel)) {
+                return prevSelectedChips.filter(label => label !== chipLabel);
+            } else {
+                return [...prevSelectedChips, chipLabel];
+            }
+        });
+    }
 
     return (
         <View>
-            <View style={styles.chip}>
-                <Chip
-                icon="information"
-                mode="flat"
-                onPress={() => Alert.alert('Information chip pressed')}>
-                Information
+            <View style={styles.row}>
+                {selectedChips.length < 3 && (
+                    <Text style={styles.warning}>⚠️ 少なくとも３個以上のタグを選択してください ⚠️</Text>
+                )}
+                {Object.keys(tags).map((key) => (
+                    <Chip key={key} onPress={() => handleChipPress(key)} selected={selectedChips.includes(key)} style={styles.chip}>
+                        {tags[key]}
+                    </Chip>
+                 ))}
+            </View>
+            <View>
+                <Chip onPress={() => console.log(selectedChips)} style={styles.button} mode="outlined">
+                    次へ
                 </Chip>
             </View>
-            <View style={styles.chip}>
-            {Object.keys(tag).map((key) => (
-                
-                    <Chip icon="heart" mode="outlined" selectedColor="red" onPress={() => console.log(key)}>
-                        {tag[key]}
-                    </Chip>
-                
-            ))}
-            </View>
-            {/* <View>
-                {names.map((element, index) => {
-                    return (
-                    <div key={index}>
-                        <h2>{element}</h2>
-                    </div>
-                    );
-                })}
-            </View> */}
         </View>
     );
 }

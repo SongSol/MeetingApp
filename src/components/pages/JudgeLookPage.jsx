@@ -1,10 +1,31 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {View, StyleSheet, Text } from 'react-native';
 import JudgeLookTemplate from '@components/templates/JudgeLookTemplate';
+import axios from 'axios';
 
-export default function JudgeLookPage({navigation}) {
-    const [memberId, setMemberId] = useState(1);
-    
+const JudgeLookPage = ({navigation}) => {
+    const [judgeList, setJudgeList] = useState([{userId : 0, image_id: 0}]);
+    const [index, setIndex] = useState(0);
+    useEffect(() => {
+        const getJudgeList = async () => {
+            try {
+                const res = await axios.post
+                ('https://hdl1680qch.execute-api.ap-northeast-1.amazonaws.com/JudgeProfile',
+                    {
+                        userId : 1,
+                        limit : 5
+                    });
+
+                    if (res !== '') {
+                        setJudgeList(res.data);
+                    }
+            } catch(e) {
+                console.log(e);
+            }
+        };
+        getJudgeList();
+    }, []);
+
     const styles = StyleSheet.create({
         container: {
             flex: 1,
@@ -25,35 +46,61 @@ export default function JudgeLookPage({navigation}) {
         }
     });
 
+    function judgeLook (score) {
+        axios.post(
+            'https://es93a6wdv6.execute-api.ap-northeast-1.amazonaws.com/UserProfileScore',
+            {
+                user_id : judgeList[index].id,
+                like_from_user_id : 1,
+                score : score
+            }
+        ).then((res) => {
+            if (index + 1 == judgeList.length) {
+                navigation.navigate('JudgeSelfLook');
+            } else {
+                setIndex(index + 1);
+            }
+        });
+    }
+
     const members = [
-        { id: 1, src: require('@assets/images/김채원.png') },
-        { id: 2, src: require('@assets/images/사쿠라.png') },
-        { id: 3, src: require('@assets/images/카즈하.png') },
-        { id: 4, src: require('@assets/images/허윤진.png') },
-        { id: 5, src: require('@assets/images/hong.png') }
+        { id: 1, src: 'https://hyple.s3.ap-northeast-1.amazonaws.com/public/profile_image/1.png' },
+        { id: 2, src: 'https://hyple.s3.ap-northeast-1.amazonaws.com/public/profile_image/2.png' },
+        { id: 3, src: 'https://hyple.s3.ap-northeast-1.amazonaws.com/public/profile_image/3.png' },
+        { id: 4, src: 'https://hyple.s3.ap-northeast-1.amazonaws.com/public/profile_image/4.png' },
     ];
 
-    return (
-        <View style={styles.container}>
-            <Text
-                style={styles.count_judge}
-            >
-                {memberId} / {members.length}
-            </Text>
-            {
-                members.map( member => {
-                    if(memberId === member.id) {
-                        return (
-                            <JudgeLookTemplate
-                                src={member.src}
-                                onPress={ memberId < members.length ? () => setMemberId(memberId + 1) : () => navigation.navigate('JudgeSelfLook')}
-                                memberId={this.memberId}
-                                key={member.id}
-                            />
-                        )
-                    }
-                })
-            }
-        </View>
-    );
+    if (judgeList.length > 0) {
+        return (
+            <View style={styles.container}>
+                <Text
+                    style={styles.count_judge}
+                >
+                    {index} / {judgeList.length}
+                </Text>
+                <JudgeLookTemplate
+                    src={'https://hyple.s3.ap-northeast-1.amazonaws.com/public/profile_image/' + judgeList[index].image_id + '.png'}
+                    memberId={judgeList[index].userId}
+                    judgeLook={judgeLook}
+                />
+            </View>
+        );
+    } else {
+        return (
+            <View style={styles.container}>
+                <Text
+                    style={styles.count_judge}
+                >
+                    {index} / {members.length}
+                </Text>
+                <JudgeLookTemplate
+                    // src={'https://hyple.s3.ap-northeast-1.amazonaws.com/public/profile_image/' + judgeList[index].image_id + '.png'}
+                    // memberId={memberId}
+                    // judgeLook={judgeLook}
+                />
+            </View>
+        );
+    }
 }
+
+export default JudgeLookPage;

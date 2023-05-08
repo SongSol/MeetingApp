@@ -4,7 +4,7 @@ import { Button } from 'react-native-paper';
 import TextInput from '@components/atoms/TextInput';
 import AppContext from '@components/atoms/AppContext';
 
-export default function Email({navigation}) {
+export default function Password({navigation}) {
 
   const styles = StyleSheet.create({
       container: {
@@ -15,7 +15,7 @@ export default function Email({navigation}) {
       },
     });
   const myContext = useContext(AppContext);
-  const [email, setEmail] = useState(''); 
+  const [password, setPassword] = useState(''); 
   useEffect(() => {
     // console.log(myContext);
   },[]);
@@ -23,16 +23,16 @@ export default function Email({navigation}) {
   return (
     <View style={styles.container}>
       <TextInput 
-        value={email}
-        onChangeText={setEmail}
-        label="Email"
-        placeholder="Emailを入力してください"
+        value={password}
+        onChangeText={setPassword}
+        label="Password"
+        placeholder="Passwordを入力してください"
       />
       <Button 
         mode="text" 
         onPress={() => {
-          myContext.email = email;
-          navigation.navigate('Password')
+          myContext.password = password;
+          navigation.navigate('Gender')
         }}>
         次へ
       </Button>

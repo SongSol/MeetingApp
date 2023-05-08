@@ -1,9 +1,9 @@
-import React from 'react';
+import { useContext, useState } from 'react';
 import { View, StyleSheet } from 'react-native';
-
+import { ProgressBar, MD3Colors } from 'react-native-paper';
 import Button from '@components/atoms/Button';
 import TextInput from '@components/atoms/TextInput';
-
+import AppContext from '@components/atoms/AppContext';
 
 export default function BirthDate({navigation}) {
     const styles = StyleSheet.create({
@@ -13,12 +13,34 @@ export default function BirthDate({navigation}) {
           alignItems: 'center',
           justifyContent: 'center',
         },
+        progress: {
+          height: 10,
+          width:undefined,
+          // backgroundImage: 'linear-gradient(to right, #FF0000, #00FF00)'
+          backgroundColor: '#eee',
+        }
     });
-    const bod = "生年月日";
+    const myContext = useContext(AppContext);
+    const [birthdate, setBirthdate] = useState(''); 
+
     return (
-    <View style={styles.container}>
-      <TextInput label={bod} placeholder={"生年月日を入力してください"}/>
-      <Button type="long" title="次へ" onPress={() => navigation.navigate('Height')} />
-    </View>
+      <View style={{ flex: 1 }}>
+        <ProgressBar progress={0.3} style={styles.progress} color={MD3Colors.error50} />
+        <View style={styles.container}>
+          <TextInput
+            value={birthdate}
+            onChangeText={setBirthdate}
+            label="生年月日"
+            placeholder="生年月日を入力してください"/>
+          <Button
+            type="long" 
+            title="次へ" 
+            onPress={() => {
+              myContext.birthdate = birthdate;
+              navigation.navigate('Height')
+              }} 
+          />
+        </View>
+      </View>
   );
 }

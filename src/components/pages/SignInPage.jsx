@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
+
 import CustomText from '@components/atoms/CustomText';
 import TextInput from '@components/atoms/TextInput';
 import {View, StyleSheet} from 'react-native';
 import Button from '@components/atoms/Button';
+// import Button from 'react-native-paper';
 import axios from 'axios';
 
 export default function SignInPage({navigation}) {
@@ -16,27 +18,22 @@ export default function SignInPage({navigation}) {
         backgroundColor: '#fff',
         alignItems: 'center',
         justifyContent: 'center',
-      },
-      button: {
-        width: 200,
-        height: 50,
-        margin: 20,
       }
   });
   
-  const getSignIn = async () => {
-    try {
-      const response = await axios.get(
-        'https://4ay6bv8m9k.execute-api.ap-northeast-1.amazonaws.com/getSignIn'
-        // , {
-        //   params: {
-        //     id: email,
-        //     password: password
-        //   }
-        // }
+  const postSignIn = async (email, password) => {
+    try { 
+      const response = await axios.post(
+        'https://gbp4u8anb3.execute-api.ap-northeast-1.amazonaws.com/User'
+        , {
+          what: "signin",
+          email: email,
+          password : password
+        } 
       )
-      console.log(response);
+      response.data == 1 ? navigation.navigate('MainPage') : alert("login失敗");
     } catch(e){
+        alert("login失敗");
       console.log(e);
     }
   }
@@ -44,10 +41,19 @@ export default function SignInPage({navigation}) {
   return (
     <View style={styles.container}>
       <CustomText text={"EMAIL"}/>
-      <TextInput onChangeText={email => setEmail(email)} label="email" placeholder={"emailを入力してください。" }/>
+      <TextInput 
+        value={email}
+        onChangeText={setEmail} 
+        label="email" 
+        placeholder="emailを入力してください。"
+      />
       <CustomText text={"PASSWORD"}/>
-      <TextInput onChangeText={password => setPassword(password)} label="password" placeholder={"passwordを入力してください。"} />
-      <Button type="long" title="ログイン" onPress={() => getSignIn()} />
+      <TextInput 
+        onChangeText={setPassword} 
+        label="password" 
+        placeholder="passwordを入力してください。" 
+      />
+      <Button type="long" title="ログイン" onPress={() => postSignIn(email, password)} />
     </View>
   );
 }
