@@ -52,22 +52,22 @@ export default function App() {
             {/* <Stack.Screen name="LoadingPage" component={LoadingPage} /> */}
             <Stack.Screen name="InitialPage" component={InitialPage} />
             <Stack.Screen name="SignInPage" component={SignInPage} />
-            <Stack.Screen name="Phone" component={Phone} />
             <Stack.Screen name="Email" component={Email} />
             <Stack.Screen name="Password" component={Password} />
-            <Stack.Screen name="Gender" component={Gender} />
-            <Stack.Screen name="Nickname" component={Nickname} />        
+            <Stack.Screen name="Phone" component={Phone} />
+            <Stack.Screen name="Nickname" component={Nickname} /> 
             <Stack.Screen name="BirthDate" component={BirthDate} />
+            <Stack.Screen name="Gender" component={Gender} />  
+            <Stack.Screen name="JudgeLookPage" component={JudgeLookPage} />
+            <Stack.Screen name="JudgeSelfLook" component={JudgeSelfLook} />
+            <Stack.Screen name="Judgefail" component={Judgefail} />
+            <Stack.Screen name="PictureUploadPage" component={PictureUploadPage} />
             <Stack.Screen name="Height" component={Height} />
             <Stack.Screen name="BodyType" component={BodyType} />
             <Stack.Screen name="Address" component={Address} />
             <Stack.Screen name="Job" component={Job} />
             <Stack.Screen name="AnnualSalary" component={AnnualSalary} />
             <Stack.Screen name="OffDay" component={OffDay} />
-            <Stack.Screen name="JudgeLookPage" component={JudgeLookPage} />
-            <Stack.Screen name="JudgeSelfLook" component={JudgeSelfLook} />
-            <Stack.Screen name="Judgefail" component={Judgefail} />
-            <Stack.Screen name="PictureUploadPage" component={PictureUploadPage} />
             <Stack.Screen name="TagSelect" component={TagSelect} />
             <Stack.Screen name="MainPage" component={MainPage} />
             {/* <Stack.Screen name="BottomNavigation" component={BottomNavigation} /> */}

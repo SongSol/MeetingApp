@@ -45,13 +45,11 @@ export default function SignInPage({navigation}) {
         value={email}
         onChangeText={setEmail} 
         label="email" 
-        placeholder="emailを入力してください。"
       />
       <CustomText text={"PASSWORD"}/>
       <TextInput 
         onChangeText={setPassword} 
         label="password" 
-        placeholder="passwordを入力してください。" 
       />
       <Button type="long" title="ログイン" onPress={() => postSignIn(email, password)} />
     </View>
