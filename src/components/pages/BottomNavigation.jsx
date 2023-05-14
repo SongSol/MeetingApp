@@ -28,7 +28,7 @@ export default function InitialPage({navigation}) {
 
     return (
         <View style={{ flex: 1 }}>
-            <BottomNavigation activeColor="#6200ee" navigationState={{index, routes}} onIndexChange={setIndex} renderScene={renderScene}/>
+            <BottomNavigation barStyle={{ height: 70, justifyContent: 'center',}} activeColor="#6200ee" navigationState={{index, routes}} onIndexChange={setIndex} renderScene={renderScene}/>
         </View>
     );
 }
