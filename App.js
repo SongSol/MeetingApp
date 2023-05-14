@@ -22,10 +22,10 @@ import PictureUploadPage from '@components/pages/PictureUploadPage';
 import Judgefail from '@components/pages/Judgefail';
 import { Provider } from 'react-native-paper';
 import TagSelect from '@components/pages/TagSelect';
-import MainPage from '@components/pages/MainPage';
+import Main from '@components/pages/Main';
 import AppContext from '@components/atoms/AppContext';
 // import BottomNavigation from '@components/pages/BottomNavigation';
-// import {View, Button, Image, StyleSheet, Text} from 'react-native';
+
 
 export default function App() {
 
@@ -69,7 +69,7 @@ export default function App() {
             <Stack.Screen name="AnnualSalary" component={AnnualSalary} />
             <Stack.Screen name="OffDay" component={OffDay} />
             <Stack.Screen name="TagSelect" component={TagSelect} />
-            <Stack.Screen name="MainPage" component={MainPage} />
+            <Stack.Screen name="Main" component={Main} />
             {/* <Stack.Screen name="BottomNavigation" component={BottomNavigation} /> */}
           </Stack.Navigator>
         </NavigationContainer>

@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
+import {View, StyleSheet} from 'react-native';
+import axios from 'axios';
 
+import Button from '@components/atoms/Button';
 import CustomText from '@components/atoms/CustomText';
 import TextInput from '@components/atoms/TextInput';
-import {View, StyleSheet} from 'react-native';
-import Button from '@components/atoms/Button';
-// import Button from 'react-native-paper';
-import axios from 'axios';
 
 export default function SignInPage({navigation}) {
 
@@ -31,27 +30,36 @@ export default function SignInPage({navigation}) {
           password : password
         } 
       )
-      response.data == 1 ? navigation.navigate('MainPage') : alert("login失敗");
+      response.data == 1 ? navigation.navigate('MainPage') : alert("login失敗@");
     } catch(e){
-        alert("login失敗");
+        alert("login失敗!");
       console.log(e);
     }
   }
     
   return (
     <View style={styles.container}>
-      <CustomText text={"EMAIL"}/>
+      <CustomText 
+        style={"title"}
+        text={"EMAIL"}
+      />
       <TextInput 
         value={email}
         onChangeText={setEmail} 
         label="email" 
       />
-      <CustomText text={"PASSWORD"}/>
+      <CustomText 
+        style={"title"}
+        text={"PASSWORD"}/>
       <TextInput 
         onChangeText={setPassword} 
         label="password" 
       />
-      <Button type="long" title="ログイン" onPress={() => postSignIn(email, password)} />
+      <Button 
+        type="long" 
+        title="ログイン" 
+        onPress={() => postSignIn(email, password)} 
+      />
     </View>
   );
 }
