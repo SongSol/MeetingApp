@@ -30,7 +30,7 @@ export default function Gender({navigation}) {
       justifyContent: 'flex-end',
     },
     progress: {
-      height: 10,
+      height: 5,
       width:undefined,
       backgroundColor: '#eee',
     },
@@ -44,7 +44,7 @@ export default function Gender({navigation}) {
 
   return (
     <View style={{ flex: 1 }}>
-      <ProgressBar progress={0.1} style={styles.progress} color={MD3Colors.error50} />
+      <ProgressBar progress={0.3} style={styles.progress} color={MD3Colors.error50} />
       <View style={styles.container}>
         <View style={styles.topSection}>
           <CustomText 

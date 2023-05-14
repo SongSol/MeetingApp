@@ -30,7 +30,7 @@ export default function Height({navigation}) {
       justifyContent: 'flex-end',
     },
     progress: {
-      height: 10,
+      height: 5,
       width:undefined,
       backgroundColor: '#eee',
     }

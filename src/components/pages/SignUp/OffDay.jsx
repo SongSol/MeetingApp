@@ -35,7 +35,7 @@ export default function OffDay({navigation}) {
         margin: 10
     },
     progress: {
-      height: 10,
+      height: 5,
       width:undefined,
       backgroundColor: '#eee',
     }
