@@ -23,13 +23,10 @@ export default function Gender({navigation}) {
       flex: 0.2,
     },
     middleSection: {
-      flex: 0.2,
-      justifyContent: 'left',
-      alignItems: 'left',
-      textAlign: 'left',
+      flex: 0.7,
     },
     bottomSection: {
-      flex: 0.6,
+      flex: 0.1,
       justifyContent: 'flex-end',
     },
     progress: {
@@ -66,7 +63,7 @@ export default function Gender({navigation}) {
             onPress={() => {
               myContext.gender = gender;
               // navigation.navigate('JudgeLookPage')}} 
-              navigation.navigate('JudgeLookPage')}} 
+              navigation.navigate('Height')}} 
           />
         </View> 
       </View>

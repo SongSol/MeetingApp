@@ -1,4 +1,4 @@
-import { useEffect, useContext, useState } from 'react';
+import { useContext, useState } from 'react';
 import { View, StyleSheet } from 'react-native';
 import { ProgressBar, MD3Colors } from 'react-native-paper';
 
@@ -6,7 +6,6 @@ import Button from '@components/atoms/Button';
 import RadioButton from '@components/atoms/RadioButton';
 import AppContext from '@components/atoms/AppContext';
 import CustomText from '@components/atoms/CustomText';
-import HeightData from '@assets/signUpDataList/HeightData';
 
 export default function Height({navigation}) {
   const styles = StyleSheet.create({
@@ -24,23 +23,20 @@ export default function Height({navigation}) {
       flex: 0.2,
     },
     middleSection: {
-      flex: 0.2,
+      flex: 0.7,
     },
     bottomSection: {
-      flex: 0.6,
+      flex: 0.1,
       justifyContent: 'flex-end',
     },
-      button: {
-          width: 100,
-          height: 50,
-          margin: 10
-      },
-      progress: {
-        height: 10,
-        width:undefined,
-        backgroundColor: '#eee',
-      }
+    progress: {
+      height: 10,
+      width:undefined,
+      backgroundColor: '#eee',
+    }
   });
+
+  const heightType = Object.values(require('@assets/signUpDataList/HeightType.json'));
   const myContext = useContext(AppContext);
   const [height, setHeight] = useState(''); 
 
@@ -57,7 +53,7 @@ export default function Height({navigation}) {
         </View>
         <View style={styles.middleSection}>
           <RadioButton 
-            items={HeightData()} 
+            items={heightType} 
             value={height} 
             setValue={setHeight}/>
         </View>

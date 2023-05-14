@@ -24,10 +24,10 @@ export default function AnnualSalary({navigation}) {
       flex: 0.2,
     },
     middleSection: {
-      flex: 0.2,
+      flex: 0.7,
     },
     bottomSection: {
-      flex: 0.6,
+      flex: 0.1,
       justifyContent: 'flex-end',
     },
     button: {
@@ -41,7 +41,7 @@ export default function AnnualSalary({navigation}) {
       backgroundColor: '#eee',
     }
   });
-
+  const SalaryType = Object.values(require('@assets/signUpDataList/SalaryType.json'));
   const [annualsalary, setAnnualsalary] = useState();
   const myContext = useContext(AppContext);
 
@@ -58,7 +58,7 @@ export default function AnnualSalary({navigation}) {
         </View>
         <View style={styles.middleSection}>
           <RadioButton
-            items={AnnualSalaryData()}
+            items={SalaryType}
             value={annualsalary}
             setValue={setAnnualsalary}
           />

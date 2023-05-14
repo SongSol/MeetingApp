@@ -5,7 +5,6 @@ import { ProgressBar, MD3Colors } from 'react-native-paper';
 import AppContext from '@components/atoms/AppContext';
 import Button from '@components/atoms/Button';
 import CustomText from '@components/atoms/CustomText';
-import JobList from '@assets/signUpDataList/JobList';
 import RadioButton from '@components/atoms/RadioButton';
 
 export default function Job({navigation}) {
@@ -24,10 +23,10 @@ export default function Job({navigation}) {
       flex: 0.2,
     },
     middleSection: {
-      flex: 0.2,
+      flex: 0.7,
     },
     bottomSection: {
-      flex: 0.6,
+      flex: 0.1,
       justifyContent: 'flex-end',
     },
     button: {
@@ -42,6 +41,7 @@ export default function Job({navigation}) {
     }
   });
 
+  const JobType = Object.values(require('@assets/signUpDataList/JobType.json'));
   const [job, setJob] = useState();
   const myContext = useContext(AppContext);
 
@@ -58,7 +58,7 @@ export default function Job({navigation}) {
         </View>
         <View style={styles.middleSection}>
           <RadioButton 
-            items={JobList()}
+            items={JobType}
             value={job}
             setValue={setJob}
           />

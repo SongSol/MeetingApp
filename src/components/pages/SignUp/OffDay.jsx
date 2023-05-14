@@ -24,10 +24,10 @@ export default function OffDay({navigation}) {
       flex: 0.2,
     },
     middleSection: {
-      flex: 0.2,
+      flex: 0.7,
     },
     bottomSection: {
-      flex: 0.6,
+      flex: 0.1,
       justifyContent: 'flex-end',
     },
     button: {
@@ -42,6 +42,7 @@ export default function OffDay({navigation}) {
     }
   });
 
+  const OffDayType = Object.values(require('@assets/signUpDataList/OffDayType.json'));
   const [offday, setOffday] = useState();
   const myContext = useContext(AppContext);
   
@@ -58,7 +59,7 @@ export default function OffDay({navigation}) {
         </View>
         <View style={styles.middleSection}>
           <RadioButton
-            items={OffDayData()}
+            items={OffDayType}
             value={offday}
             setValue={setOffday}
           />

@@ -22,10 +22,10 @@ export default function Email({navigation}) {
       flex: 0.2,
     },
     middleSection: {
-      flex: 0.2,
+      flex: 0.7,
     },
     bottomSection: {
-      flex: 0.6,
+      flex: 0.1,
       justifyContent: 'flex-end',
     },
   });

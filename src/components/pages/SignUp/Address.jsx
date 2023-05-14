@@ -25,10 +25,10 @@ export default function Address({navigation}) {
       flex: 0.2,
     },
     middleSection: {
-      flex: 0.2,
+      flex: 0.7,
     },
     bottomSection: {
-      flex: 0.6,
+      flex: 0.1,
       justifyContent: 'flex-end',
     },
     button: {
@@ -43,6 +43,7 @@ export default function Address({navigation}) {
     }
   });
 
+  const AddressType = Object.values(require('@assets/signUpDataList/AddressType.json'));
   const [address, setAddress] = useState();
   const myContext = useContext(AppContext);
 
@@ -59,21 +60,23 @@ export default function Address({navigation}) {
         </View>
         <View style={styles.middleSection}>
           <RadioButton 
-            items={AddressData()}
+            items={AddressType}
             value={address}
             setValue={setAddress}
           />
         </View>
         <View style={styles.bottomSection}>
           <Button 
-            type="long" 
-            title="次へ" 
-            onPress={() => {
-              myContext.address = address;
-              navigation.navigate('Job')
-            }} 
-          />
+              type="long" 
+              title="次へ" 
+              onPress={() => {
+                myContext.address = address;
+                navigation.navigate('Job')
+              }} 
+            />
         </View>
+        
+        
       </View>
     </View>
   );

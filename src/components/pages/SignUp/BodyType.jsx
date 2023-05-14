@@ -4,7 +4,6 @@ import {View, StyleSheet} from 'react-native';
 
 import AppContext from '@components/atoms/AppContext';
 import Button from '@components/atoms/Button';
-import BodyTypeData from '@assets/signUpDataList/BodyTypeData';
 import CustomText from '@components/atoms/CustomText';
 import RadioButton from '@components/atoms/RadioButton';
 
@@ -24,10 +23,10 @@ export default function Weight({navigation}) {
       flex: 0.2,
     },
     middleSection: {
-      flex: 0.2,
+      flex: 0.7,
     },
     bottomSection: {
-      flex: 0.6,
+      flex: 0.1,
       justifyContent: 'flex-end',
     },
     button: {
@@ -42,6 +41,7 @@ export default function Weight({navigation}) {
     }
   });
 
+  const BodyType = Object.values(require('@assets/signUpDataList/BodyType.json'));
   const [bodytype, setBodytype] = useState();
   const myContext = useContext(AppContext);
 
@@ -58,7 +58,7 @@ export default function Weight({navigation}) {
         </View>
         <View style={styles.middleSection}>
           <RadioButton 
-            items={BodyTypeData()} 
+            items={BodyType} 
             value={bodytype} 
             setValue={setBodytype} 
           />
