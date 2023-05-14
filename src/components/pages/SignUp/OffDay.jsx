@@ -5,7 +5,6 @@ import { ProgressBar, MD3Colors } from 'react-native-paper';
 import AppContext from '@components/atoms/AppContext';
 import Button from '@components/atoms/Button';
 import CustomText from '@components/atoms/CustomText';
-import OffDayData from '@assets/signUpDataList/OffDayData';
 import RadioButton from '@components/atoms/RadioButton';
 
 export default function OffDay({navigation}) {
