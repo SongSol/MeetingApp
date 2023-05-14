@@ -2,7 +2,7 @@ import React from 'react';
 import {View, StyleSheet } from 'react-native';
 import CustomText from '@components/atoms/CustomText';
 
-export default function MainPage({}) {
+export default function Main({}) {
 
     const styles = StyleSheet.create({
         container: {

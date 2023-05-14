@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
+import {View, StyleSheet} from 'react-native';
+import axios from 'axios';
 
+import Button from '@components/atoms/Button';
 import CustomText from '@components/atoms/CustomText';
 import TextInput from '@components/atoms/TextInput';
-import {View, StyleSheet} from 'react-native';
-import Button from '@components/atoms/Button';
-// import Button from 'react-native-paper';
-import axios from 'axios';
 
 export default function SignInPage({navigation}) {
 
@@ -40,13 +39,19 @@ export default function SignInPage({navigation}) {
     
   return (
     <View style={styles.container}>
-      <CustomText text={"EMAIL"}/>
+      <CustomText 
+        style="title"
+        text="EMAIL"
+      />
       <TextInput 
         value={email}
         onChangeText={setEmail} 
         label="email" 
       />
-      <CustomText text={"PASSWORD"}/>
+      <CustomText 
+        style="title"
+        text="PASSWORD"
+      />
       <TextInput 
         onChangeText={setPassword} 
         label="password" 

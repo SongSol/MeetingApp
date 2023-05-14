@@ -3,7 +3,7 @@ import { StyleSheet } from 'react-native';
 import { Text } from 'react-native-paper';
 
 export default function CustomText({ style, variant, text }) {
-  const styles = style && StyleSheet.create({
+  const styles = StyleSheet.create({
     title: {
       textAlign: 'left',
       width: 320,
