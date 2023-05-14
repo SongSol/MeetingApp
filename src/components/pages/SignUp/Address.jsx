@@ -2,7 +2,6 @@ import { useContext, useState } from 'react';
 import {View, StyleSheet} from 'react-native';
 import { ProgressBar, MD3Colors } from 'react-native-paper';
 
-import AddressData from '@assets/signUpDataList/AddressData';
 import AppContext from '@components/atoms/AppContext';
 import Button from '@components/atoms/Button';
 import CustomText from '@components/atoms/CustomText';
