@@ -6,7 +6,7 @@ export default function CustomText({ style, variant, text }) {
   const styles = StyleSheet.create({
     title: {
       textAlign: 'left',
-      width: 320,
+      width: 300,
     }
   });
   return (
