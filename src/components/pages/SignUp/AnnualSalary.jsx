@@ -17,15 +17,15 @@ export default function AnnualSalary({navigation}) {
       padding: 20,
       flexDirection: 'column',
     },
-    topSection: {
+    topView: {
       justifyContent: 'center',
       textAlign: 'left',
       flex: 0.2,
     },
-    middleSection: {
+    middleView: {
       flex: 0.7,
     },
-    bottomSection: {
+    bottomView: {
       flex: 0.1,
       justifyContent: 'flex-end',
     },
@@ -48,21 +48,21 @@ export default function AnnualSalary({navigation}) {
     <View style={{ flex: 1 }}>
       <ProgressBar progress={0.8} style={styles.progress} color={MD3Colors.error50} />
       <View style={styles.container}>
-        <View style={styles.topSection}>
+        <View style={styles.topView}>
           <CustomText 
             style={"title"}
             variant="headlineSmall" 
             text="年収はどれぐらいですか" 
           />
         </View>
-        <View style={styles.middleSection}>
+        <View style={styles.middleView}>
           <RadioButton
             items={SalaryType}
             value={annualsalary}
             setValue={setAnnualsalary}
           />
         </View>
-        <View style={styles.bottomSection}>
+        <View style={styles.bottomView}>
           <Button 
             type="long" 
             title="次へ" 

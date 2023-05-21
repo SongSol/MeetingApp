@@ -18,15 +18,15 @@ export default function Password({navigation}){
             padding: 20,
             flexDirection: 'column',
         },
-        topSection: {
+        topView: {
             alignItems: 'center',
             justifyContent: 'center',
             flex: 0.2,
         },
-        middleSection: {
+        middleView: {
             flex: 0.7,
         },
-        bottomSection: {
+        bottomView: {
             flex: 0.1,
             justifyContent: 'flex-end',
         },
@@ -40,21 +40,21 @@ export default function Password({navigation}){
     
     return (
         <View style={styles.container}>
-            <View style={styles.topSection}>
+            <View style={styles.topView}>
                 <CustomText 
                     style={"title"}
                     variant="headlineSmall" 
                     text="パスワードを入力してください。" 
                 />
             </View>
-            <View style={styles.middleSection}>
+            <View style={styles.middleView}>
                 <TextInput 
                     value={password}
                     onChangeText={setPassword}
                     label="Password"
                 />
             </View>
-            <View style={styles.bottomSection}>
+            <View style={styles.bottomView}>
                 <Button 
                     title="次へ"
                     type="long"

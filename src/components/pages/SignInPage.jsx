@@ -30,7 +30,7 @@ export default function SignInPage({navigation}) {
           password : password
         } 
       )
-      response.data == 1 ? navigation.navigate('MainPage') : alert("login失敗@");
+      response.data == 1 ? navigation.navigate('Main') : alert("login失敗@");
     } catch(e){
         alert("login失敗!");
       console.log(e);

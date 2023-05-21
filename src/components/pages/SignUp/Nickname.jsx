@@ -18,15 +18,15 @@ export default function Nickname({navigation}) {
       padding: 20,
       flexDirection: 'column',
     },
-    topSection: {
+    topView: {
       alignItems: 'center',
       justifyContent: 'center',
       flex: 0.2,
     },
-    middleSection: {
+    middleView: {
       flex: 0.7,
     },
-    bottomSection: {
+    bottomView: {
       flex: 0.1,
       justifyContent: 'flex-end',
     },
@@ -66,21 +66,21 @@ export default function Nickname({navigation}) {
     <View style={{ flex: 1 }}>
       <ProgressBar progress={0.2} style={styles.progress} color={MD3Colors.error50} />
       <View style={styles.container}>
-        <View style={styles.topSection}>
+        <View style={styles.topView}>
           <CustomText 
             style={"title"}
             variant="headlineSmall" 
             text="ニックネームを入力してください。" 
           />
         </View>
-        <View style={styles.middleSection}>
+        <View style={styles.middleView}>
           <TextInput
             value={nickname}
             onChangeText={setNickname}
             label="nickname"
           />
         </View>
-        <View style={styles.bottomSection}>
+        <View style={styles.bottomView}>
           <Button
             title="次へ"
             type="long"
