@@ -46,6 +46,9 @@ export default function InitialPage({navigation}) {
             <Button mode="text" onPress={() => navigation.navigate('BottomNavigation')}>
                     푸터
             </Button>
+            <Button mode="text" onPress={() => navigation.navigate('SocialList')}>
+                소셜리스트
+            </Button>
         </View>
     );
 }

@@ -25,7 +25,7 @@ import TagSelect from '@components/pages/TagSelect';
 import Main from '@components/pages/Main';
 import AppContext from '@components/atoms/AppContext';
 import BottomNavigation from '@components/pages/BottomNavigation';
-import MainJudge from '@components/pages/MainJudge';
+import SocialList from '@components/pages/Social/List';
 // import {View, Button, Image, StyleSheet, Text} from 'react-native';
 
 export default function App() {
@@ -72,7 +72,7 @@ export default function App() {
             <Stack.Screen name="TagSelect" component={TagSelect} />
             <Stack.Screen name="Main" component={Main} />
             <Stack.Screen name="BottomNavigation" component={BottomNavigation} />
-            <Stack.Screen name="MainJudge" component={MainJudge} />
+            <Stack.Screen name="SocialList" component={SocialList} />
           </Stack.Navigator>
         </NavigationContainer>
       </Provider>

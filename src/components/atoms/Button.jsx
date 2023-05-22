@@ -2,7 +2,7 @@ import React from 'react';
 import { Text, View, StyleSheet, Pressable } from 'react-native';
 import { Button } from 'react-native-paper';
 
-export default function ButtonAtom({ icon, title, type, onPress}) {
+export default function ButtonAtom({ style, title, type, onPress }) {
     const styles = StyleSheet.create({
         button: {
           alignItems: 'center',
