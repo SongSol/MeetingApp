@@ -2,7 +2,7 @@ import React from 'react';
 import { Text, View, StyleSheet, Pressable } from 'react-native';
 import { Button } from 'react-native-paper';
 
-export default function ButtonAtom({ title, type, onPress }) {
+export default function ButtonAtom({ icon, title, type, onPress}) {
     const styles = StyleSheet.create({
         button: {
           alignItems: 'center',
@@ -11,55 +11,47 @@ export default function ButtonAtom({ title, type, onPress }) {
           paddingHorizontal: 32,
           borderRadius: 4,
           elevation: 3,
-          backgroundColor: 'pink',
+          backgroundColor: 'gray',
         },
-        longbutton: {
+        pinkbutton: {
             alignItems: 'center',
             justifyContent: 'center',
-            paddingVertical: 12,
-            paddingHorizontal: 60,
+            width:200,
+            height:50,
             borderRadius: 4,
             elevation: 3,
-            backgroundColor: 'pink',
+            backgroundColor: '#FF71A6',
           },
-        middlebutton: {
+        bluebutton: {
             alignItems: 'center',
             justifyContent: 'center',
-            paddingVertical: 12,
-            paddingHorizontal: 32,
+            width:200,
+            height:50,
             borderRadius: 4,
             elevation: 3,
-            backgroundColor: 'pink',
-          },
-          smallbutton: {
-            alignItems: 'center',
-            justifyContent: 'center',
-            paddingVertical: 12,
-            paddingHorizontal: 10,
-            borderRadius: 4,
-            elevation: 3,
-            backgroundColor: 'pink',
+            backgroundColor: '#8CDBEB',
           },
         text: {
           fontSize: 16,
-          lineHeight: 21,
+          width:20,
+          height:15,
           fontWeight: 'bold',
           letterSpacing: 0.25,
-          color: 'white',
+          color: 'white'
         },
       });
     switch(type) {
-        case 'Long':
+        case 'Pink':
             return (
-                <Button style={styles.longbutton} 
-                  onPress={onPress} icon="camera">
+                <Button style={styles.pinkbutton} 
+                  onPress={onPress} icon={icon}>
                   <Text style={styles.text}>{title}</Text>
                 </Button>
             );
-        case 'Middle':
+        case 'Blue':
             return (
-                <Button style={styles.middlebutton} 
-                  onPress={onPress}>
+                <Button style={styles.bluebutton} 
+                  onPress={onPress} icon={icon}>
                   <Text style={styles.text}>{title}</Text>
                 </Button>
             );
