@@ -34,19 +34,6 @@ export default function TagSelect({navigation}) {
         }
     });
 
-    // const tag = {
-    //     1: "movie",
-    //     2: "sports",
-    //     3: "cooking",
-    //     4: "game",
-    //     5: "cleaning",
-    //     6: "TV",
-    //     7: "books",
-    //     8: "shopping",
-    //     9: "coding",
-    //     10: "work"
-    // }
-
     const tags = {}
 
     const [data, setData] = useState(null);

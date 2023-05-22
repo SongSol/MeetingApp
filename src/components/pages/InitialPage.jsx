@@ -49,6 +49,9 @@ export default function InitialPage({navigation}) {
             <Button mode="text" onPress={() => navigation.navigate('SocialList')}>
                 소셜리스트
             </Button>
+            <Button mode="text" onPress={() => navigation.navigate('ChatMain')}>
+                채팅메인
+            </Button>
         </View>
     );
 }
