@@ -1,20 +1,17 @@
 import React from 'react';
-import { StyleSheet, Text } from 'react-native';
+import { StyleSheet } from 'react-native';
+import { Text } from 'react-native-paper';
 
-export default function CustomText({ text }) {
+export default function CustomText({ style, variant, text }) {
   const styles = StyleSheet.create({
-    text: {
-        width: 150,
-        height: 30,
-        margin: 10,
+    title: {
+      textAlign: 'left',
+      width: 320,
     }
   });
-
   return (
-    <Text style={styles.text}> 
+    <Text style={styles.title} variant={variant}> 
       {text}
     </Text>
-        
-    
   );
 }

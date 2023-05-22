@@ -1,13 +1,12 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
-
 import { TextInput } from "react-native-paper";
 
-export default function TextInputAtom({ value, onChangeText, label, placeholder }) {
+export default function TextInputAtom({ value, onChangeText, label }) {
   
   const styles = StyleSheet.create({
     TextInput: {
-        width: 250,
+        width: 300,
         height: 50,
         margin: 10,
     }
@@ -18,7 +17,8 @@ export default function TextInputAtom({ value, onChangeText, label, placeholder 
       style={styles.TextInput}
       label={label}
       mode="outlined"
-      placeholder={placeholder}
+      outlineColor="pink"
+      activeOutlineColor="pink"
       value={value}
       onChangeText={onChangeText}
       secureTextEntry={label === "password" ? true : false}

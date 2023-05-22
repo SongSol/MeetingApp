@@ -25,7 +25,7 @@ export default function InitialPage({navigation}) {
             <Button mode="text" onPress={() => navigation.navigate('SignInPage')}>
                 ログイン
             </Button>
-            <Button mode="text" onPress={() => navigation.navigate('Phone')}>
+            <Button mode="text" onPress={() => navigation.navigate('Email')}>
                 会員登録
             </Button>
             <Button mode="text" onPress={() => navigation.navigate('PictureUploadPage')}>
