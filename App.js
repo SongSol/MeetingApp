@@ -26,6 +26,7 @@ import Main from '@components/pages/Main';
 import AppContext from '@components/atoms/AppContext';
 import BottomNavigation from '@components/pages/BottomNavigation';
 import SocialList from '@components/pages/Social/List';
+import SocialDetail from '@components/pages/Social/SocialDetail';
 // import {View, Button, Image, StyleSheet, Text} from 'react-native';
 
 export default function App() {
@@ -73,6 +74,7 @@ export default function App() {
             <Stack.Screen name="Main" component={Main} />
             <Stack.Screen name="BottomNavigation" component={BottomNavigation} />
             <Stack.Screen name="SocialList" component={SocialList} />
+            <Stack.Screen name="SocialDetail" component={SocialDetail} />
           </Stack.Navigator>
         </NavigationContainer>
       </Provider>
