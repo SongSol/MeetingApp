@@ -1,13 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, StyleSheet } from 'react-native';
 import { Button, List } from 'react-native-paper';
+import axios from 'axios';
 
 export default function ChatMain() {
-  const [selectedButton, setSelectedButton] = useState("Button 1");
-
-  const handleButtonPress = (button) => {
-    setSelectedButton(button);
-  };
 
   const styles = StyleSheet.create({
     container: {
@@ -41,6 +37,49 @@ export default function ChatMain() {
       paddingTop: 20,
     },
   })
+
+  const tags = {}
+
+    const [data, setData] = useState(null);
+    const [isLoading, setIsLoading] = useState(true);
+
+    useEffect(() => {
+        const fetchData = async () => {
+        try {
+            const response = await axios.get('https://q1nnafsjxe.execute-api.ap-northeast-1.amazonaws.com/getCategory');
+            setData(response.data['body']);
+            setIsLoading(false);
+        } catch (error) {
+            console.error(error);
+            setIsLoading(false);
+        }
+        };
+
+        fetchData();
+    }, []);
+
+    isLoading ? (
+        console.log("loading....")
+      ) : (
+          data.length > 0 ? (
+            // console.log(data)
+            data.map(array => (
+                // console.log(array)
+                tags[array["id"]] = array["title"]
+            ))
+          ) : (
+            console.log("No data available")
+          )
+    )
+    console.log(tags)
+
+  const [selectedButton, setSelectedButton] = useState("Button 1");
+
+  const handleButtonPress = (button) => {
+    setSelectedButton(button);
+  };
+
+  
 
   return (
     <View style={styles.container}>

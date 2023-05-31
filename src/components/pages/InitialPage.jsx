@@ -52,6 +52,9 @@ export default function InitialPage({navigation}) {
             <Button mode="text" onPress={() => navigation.navigate('ChatMain')}>
                 채팅메인
             </Button>
+            <Button mode="text" onPress={() => navigation.navigate('LoadingPage')}>
+                로딩페이지
+            </Button>
         </View>
     );
 }

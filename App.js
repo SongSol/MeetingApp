@@ -1,7 +1,7 @@
 import React, { createContext } from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-// import LoadingPage from '@components/pages/LoadingPage';
+import LoadingPage from '@components/pages/LoadingPage';
 import SignInPage from '@components/pages/SignInPage';
 import InitialPage from '@components/pages/InitialPage';
 import JudgeLookPage from '@components/pages/JudgeLookPage';
@@ -75,6 +75,7 @@ export default function App() {
             <Stack.Screen name="BottomNavigation" component={BottomNavigation} />
             <Stack.Screen name="ChatMain" component={ChatMain} />
             <Stack.Screen name="SocialList" component={SocialList} />
+            <Stack.Screen name="LoadingPage" component={LoadingPage} />
           </Stack.Navigator>
         </NavigationContainer>
       </Provider>
