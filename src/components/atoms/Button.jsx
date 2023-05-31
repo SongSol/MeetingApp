@@ -55,13 +55,13 @@ export default function ButtonAtom({ icon, title, type, onPress}) {
                   <Text style={styles.text}>{title}</Text>
                 </Button>
             );
-        case 'Small':
-            return (
-                <Button style={styles.smallbutton} 
-                  onPress={onPress}>
-                  <Text style={styles.text}>{title}</Text>
-                </Button>
-            );
+        // case 'Small':
+        //     return (
+        //         <Button style={styles.smallbutton} 
+        //           onPress={onPress}>
+        //           <Text style={styles.text}>{title}</Text>
+        //         </Button>
+        //     );
         default:
             return (
                 <Button style={styles.button} 
