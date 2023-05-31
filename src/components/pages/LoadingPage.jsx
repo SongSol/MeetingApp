@@ -7,28 +7,6 @@ import {StyleSheet, Animated, Easing,SafeAreaView} from 'react-native';
 
 
 export default function LoadingPage ({navigation}) {
-  // const logo = {
-  //   uri: 'https://reactnative.dev/img/tiny_logo.png',
-  //   width: 300,
-  //   height: 300,
-  // };
-  // const styles = StyleSheet.create({
-  //   container: {
-  //     flex: 1,
-  //     backgroundColor: '#fff',
-  //     alignItems: 'center',
-  //     justifyContent: 'center',
-  //   },
-  // });
-  // return (
-  //   <View style={styles.container}>
-  //     <Text>Loading Page</Text>
-  //     <Image source={logo} />
-  //     <StatusBar style="auto" />
-
-   
-  //   </View>
-  // );
 
   const FROM_COLOR = '#FF71A6';
   const TO_COLOR = '#8CDBEB';
@@ -86,7 +64,7 @@ export default function LoadingPage ({navigation}) {
       </Defs>
       <Rect x="0" y="0" width="100%" height="100%" fill="url(#grad)"/>
       <Animated.View style={{opacity: backgroundFade, alignItems: 'center',justifyContent: 'center'}}>
-        <Animated.Text style={styles.logo}>HIPLE</Animated.Text>
+        <Animated.Text style={styles.logo}>HYPLE</Animated.Text>
       </Animated.View>
     </Svg>
   );
