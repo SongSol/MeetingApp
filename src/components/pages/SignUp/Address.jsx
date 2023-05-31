@@ -25,6 +25,7 @@ export default function Address({navigation}) {
     },
     middleView: {
       flex: 0.7,
+      width: 300,
     },
     bottomView: {
       flex: 0.1,

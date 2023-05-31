@@ -24,6 +24,7 @@ export default function Gender({navigation}) {
     },
     middleView: {
       flex: 0.7,
+      width: 300,
     },
     bottomView: {
       flex: 0.1,
@@ -38,6 +39,7 @@ export default function Gender({navigation}) {
       backgroundColor: '#eee',
     }
   });
+
   const genderList = ["男性", "女性"];
   const [gender, setGender] = useState();
   const myContext = useContext(AppContext);

@@ -1,4 +1,6 @@
 {
     "red" : "#FF71A6",
-    "blue" : "#8CDBEB"
+    "blue" : "#8CDBEB",
+    "gray" : "#565555",
+    "light_gray" : "#D9D9D9"
 }
