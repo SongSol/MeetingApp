@@ -41,7 +41,7 @@ export default function AnnualSalary({navigation}) {
       backgroundColor: '#eee',
     }
   });
-  const SalaryType = Object.values(require('@assets/signUpDataList/SalaryType.json'));
+  const salaryType = Object.values(require('@assets/signUpDataList/SalaryType.json'));
   const [annualsalary, setAnnualsalary] = useState();
   const myContext = useContext(AppContext);
 
@@ -58,7 +58,7 @@ export default function AnnualSalary({navigation}) {
         </View>
         <View style={styles.middleView}>
           <RadioButton
-            items={SalaryType}
+            items={salaryType}
             value={annualsalary}
             setValue={setAnnualsalary}
           />
@@ -68,7 +68,7 @@ export default function AnnualSalary({navigation}) {
             type="long" 
             title="次へ" 
             onPress={() => {
-              myContext.annualsalary = annualsalary;
+              myContext.annualsalary = salaryType.indexOf(annualsalary);
               navigation.navigate('OffDay');
             }} 
           />

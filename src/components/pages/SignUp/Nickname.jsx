@@ -54,7 +54,8 @@ export default function Nickname({navigation}) {
           phone : myContext.phone
         } 
       )
-      // alert(response.data); // 일단 그냥 ID어럴트로 보이게만해둠
+      alert(response.data); // 일단 그냥 ID어럴트로 보이게만해둠
+      myContext.userid = response.data;
       // response.data == 1 ? navigation.navigate('MainPage') : alert("login失敗");
     } catch(e){
         alert("login失敗");

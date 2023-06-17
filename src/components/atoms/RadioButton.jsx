@@ -17,7 +17,7 @@ export default function RadioButtonAtom({items, value, setValue}) {
             key={key} 
             label={item} 
             value={item} 
-            labelStyle={{ paddingright: 150 }}
+            labelStyle={{ paddingRight: 150 }}
         />
     );
 

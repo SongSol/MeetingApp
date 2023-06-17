@@ -69,7 +69,7 @@ export default function Weight({navigation}) {
             type="long" 
             title="次へ" 
             onPress={() => {
-              myContext.bodytype  = bodytype;
+              myContext.bodytype  = BodyType.indexOf(bodytype);
               navigation.navigate('Address')
             }} 
           />

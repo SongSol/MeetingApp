@@ -42,7 +42,7 @@ export default function OffDay({navigation}) {
     }
   });
 
-  const OffDayType = Object.values(require('@assets/signUpDataList/OffDayType.json'));
+  const offDayType = Object.values(require('@assets/signUpDataList/OffDayType.json'));
   const [offday, setOffday] = useState();
   const myContext = useContext(AppContext);
   
@@ -59,7 +59,7 @@ export default function OffDay({navigation}) {
         </View>
         <View style={styles.middleView}>
           <RadioButton
-            items={OffDayType}
+            items={offDayType}
             value={offday}
             setValue={setOffday}
           />
@@ -69,8 +69,8 @@ export default function OffDay({navigation}) {
             type="long" 
             title="次へ" 
             onPress={() => {
-              myContext.offday = offday;
-              navigation.navigate('JudgeLookPage');
+              myContext.offday = offDayType.indexOf(offday);
+              navigation.navigate('TagSelect');
             }} 
           />
         </View>

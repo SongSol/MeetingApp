@@ -63,7 +63,7 @@ export default function Gender({navigation}) {
             type="long"
             title="次へ" 
             onPress={() => {
-              myContext.gender = gender;
+              myContext.gender = gender === "男性" ? 1 : 2 ;
               // navigation.navigate('JudgeLookPage')}} 
               navigation.navigate('Height')}} 
           />

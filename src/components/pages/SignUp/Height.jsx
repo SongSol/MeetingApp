@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { View, StyleSheet } from 'react-native';
 import { ProgressBar, MD3Colors } from 'react-native-paper';
 
@@ -63,7 +63,7 @@ export default function Height({navigation}) {
             type="long" 
             title="次へ" 
             onPress={() => {
-              myContext.height = height;
+              myContext.height = heightType.indexOf(height);
               navigation.navigate('BodyType')
               }} 
           />

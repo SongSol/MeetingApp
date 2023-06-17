@@ -31,18 +31,20 @@ export default function App() {
 
   const Stack = createNativeStackNavigator();
   const signUpInfo = {
-    phone: '',
     email: '',
     password: '',
-    gender: '',
+    phone: '',
     nickname: '',
+    userid: '', 
     birthdate: '',
+    gender: '',
     height: '',
     bodytype: '',
     address: '',
     job: '',
     annualsalary: '',
-    offday: ''
+    offday: '',
+    tag: ''
   }
   return (
     <AppContext.Provider value={signUpInfo}>

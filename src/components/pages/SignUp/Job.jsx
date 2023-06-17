@@ -42,7 +42,7 @@ export default function Job({navigation}) {
     }
   });
 
-  const JobType = Object.values(require('@assets/signUpDataList/JobType.json'));
+  const jobType = Object.values(require('@assets/signUpDataList/JobType.json'));
   const [job, setJob] = useState();
   const myContext = useContext(AppContext);
 
@@ -59,7 +59,7 @@ export default function Job({navigation}) {
         </View>
         <View style={styles.middleView}>
           <RadioButton 
-            items={JobType}
+            items={jobType}
             value={job}
             setValue={setJob}
           />
@@ -69,7 +69,7 @@ export default function Job({navigation}) {
             type="long" 
             title="次へ" 
             onPress={() => {
-              myContext.job = job;
+              myContext.job = jobType.indexOf(job);
               navigation.navigate('AnnualSalary');
             }} 
           />
