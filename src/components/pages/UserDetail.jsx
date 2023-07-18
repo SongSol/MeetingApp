@@ -1,10 +1,13 @@
 import React from 'react';
-import { StyleSheet, Text, View, Dimensions, SafeAreaView, TouchableHighlight, Image, Linking } from 'react-native';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
+
+
+import { StyleSheet, Text, View, Dimensions, TouchableHighlight, Image, Linking } from 'react-native';
 import Carousel, { Pagination } from 'react-native-snap-carousel';
 import { Button } from 'react-native-paper';
 import {
     ScrollView,
-    StatusBar,
   } from 'react-native';
 
 const styles = StyleSheet.create({
@@ -38,11 +41,22 @@ const styles = StyleSheet.create({
         width: 150,
         height: 150,
         backgroundColor:'darkgray',
-        justifyContent: 'left',
-        alignItems: 'left',
        // marginBottom:10,
     },
+    footer: {
+        flexDirection:'row',
+        position : 'absolute',
+        top:'80%',
+        bottom:0,
+        left:'15%',
+        right:0
+        
+    },
   });
+
+
+
+  
 
 export default class App extends React.Component {
     
@@ -71,10 +85,10 @@ export default class App extends React.Component {
 
     render() {
         return (
-      <SafeAreaView>
+      <View>
       <ScrollView> 
             <View style={{alignContent:'center',alignItems:'center',margin:20}}>
-                <SafeAreaView style={{ height: 300 }}>
+                <View style={{ height: 300 }}>
                     <Carousel
                         data={this.state.data}
                         renderItem={this._renderItem}
@@ -90,18 +104,14 @@ export default class App extends React.Component {
                         activeDotIndex={this.state.activeSlide} //どのdotをactiveにするか
                         containerStyle={{paddingVertical:15}} //デフォルトではちと広い
                     />
-                </SafeAreaView>
+                </View>
                 <View style={styles.name}>
                     <Text>Songhaneol,31살</Text>
                 </View>
-                <View style={{flexDirection:'row'}}>
-                    <Button labelStyle={{fontSize: 30}} textColor="#FF4500" icon="close-thick"></Button>
-                    <Button labelStyle={{fontSize: 30}} textColor="#FFD700" icon="star-shooting"></Button>
-                    <Button labelStyle={{fontSize: 30}} textColor="hotpink" icon="heart-box" ></Button>
-                </View>
+
                 <Text style={{margin:10}}>자기소개</Text>
                 <View style={styles.content}>
-                    <Text>30살 송한얼입니다</Text>
+                    <Text>송한얼입니다</Text>
                 </View>
                 <Text>참가중인 커뮤니티</Text>
                 <View style={{flexDirection:'row'}}>
@@ -109,9 +119,17 @@ export default class App extends React.Component {
                     <Image source={require('@assets/images/김채원.png')} style={styles.image1}  />
                     <Text style={{alignContent:'center',alignItems:'center',margin:20}}>ㅋㅋㅋㅋㅋㅋㅋㅋ</Text>
                 </View>
+
             </View>
+            
       </ScrollView>
-      </SafeAreaView>   
+      <View style={styles.footer}>
+                    <Button labelStyle={{fontSize: 60}} textColor="#FF4500" icon="close-thick" ></Button>
+                    <Button labelStyle={{fontSize: 60}} textColor="#FFD700" icon="star-shooting"></Button>
+                    <Button labelStyle={{fontSize: 60}} textColor="hotpink" icon="heart-box" ></Button>
+      </View>
+      </View>   
+      
         );
     }
 }
