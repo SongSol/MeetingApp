@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { View, StyleSheet } from 'react-native';
 import { Chip, Text} from 'react-native-paper';
+import AppContext from '@components/atoms/AppContext';
 import axios from 'axios';
 
 
@@ -38,6 +39,37 @@ export default function TagSelect({navigation}) {
 
     const [data, setData] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
+    const myContext = useContext(AppContext);
+
+    const postUserProfile = async () => {
+        try { 
+            const response = await axios.post(
+                'https://3cwoz675a9.execute-api.ap-northeast-1.amazonaws.com/UserProfile'
+                , {
+                user_id: myContext.userid,
+                birth_date: myContext.birthdate,
+                gender: myContext.gender,
+                height: myContext.height,
+                body_type_id: myContext.bodytype,
+                address_id: myContext.address,
+                job_id: myContext.job,
+                salary_id: myContext.annualsalary,
+                offday: myContext.offday,
+                drink: 1,
+                smoke: true,
+                main_profile_image: 1,
+                avg_score: 1,
+                self_intro: "", 
+                tag: myContext.tag
+                } 
+            )
+            console.log(response.data);
+          // response.data == 1 ? navigation.navigate('MainPage') : alert("login失敗");
+        } catch(e){
+            alert("login失敗");
+            console.log(e);
+        }
+    }
 
     useEffect(() => {
         const fetchData = async () => {
@@ -56,18 +88,18 @@ export default function TagSelect({navigation}) {
 
     isLoading ? (
         console.log("loading....")
-      ) : (
-          data.length > 0 ? (
+    ) : (
+        data.length > 0 ? (
             // console.log(data)
             data.map(array => (
                 // console.log(array)
                 tags[array["id"]] = array["title"]
             ))
-          ) : (
+        ) : (
             console.log("No data available")
-          )
+        )
     )
-    console.log(tags)
+    
 
     const [selectedChips, setSelectedChips] = useState([]);
 
@@ -91,10 +123,16 @@ export default function TagSelect({navigation}) {
                     <Chip key={key} onPress={() => handleChipPress(key)} selected={selectedChips.includes(key)} style={styles.chip}>
                         {tags[key]}
                     </Chip>
-                 ))}
+                ))}
             </View>
             <View>
-                <Chip onPress={() => console.log(selectedChips)} style={styles.button} mode="outlined">
+                <Chip onPress={() =>{
+                    
+                    myContext.tag = selectedChips.map(Number);
+                    postUserProfile();
+                    navigation.navigate('Main');
+
+                    }} style={styles.button} mode="outlined">
                     次へ
                 </Chip>
             </View>

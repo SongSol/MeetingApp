@@ -1,15 +1,28 @@
-import React, { useEffect } from 'react';
-import { View, FlatList, Text } from 'react-native';
+import React, {  } from 'react';
+import { FlatList, StyleSheet } from 'react-native';
 import { RadioButton } from 'react-native-paper';
 
 export default function RadioButtonAtom({items, value, setValue}) {
-
+    const styles = StyleSheet.create({
+        container: {
+            flex: 1,
+            // alignItems: 'center',
+            // justifyContent: 'center',
+            // padding: 20,
+            // flexDirection: 'column',
+        },
+    });
     const renderItem = ({ item, key }) => (
-        <RadioButton.Item key={key} label={item} value={item} />
+        <RadioButton.Item 
+            key={key} 
+            label={item} 
+            value={item} 
+            labelStyle={{ paddingRight: 150 }}
+        />
     );
 
     return (
-        <RadioButton.Group onValueChange={value => setValue(value)} value={value}>
+        <RadioButton.Group styles={styles.container} onValueChange={value => setValue(value)} value={value}>
             <FlatList
                 data={items}
                 renderItem={renderItem}
@@ -29,6 +42,5 @@ export default function RadioButtonAtom({items, value, setValue}) {
         //         );
         //     })}
         // </RadioButton.Group>
-        
     );
 }

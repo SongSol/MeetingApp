@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { View, StyleSheet } from 'react-native';
 import { ProgressBar, MD3Colors } from 'react-native-paper';
 
@@ -17,15 +17,16 @@ export default function Height({navigation}) {
       padding: 20,
       flexDirection: 'column',
     },
-    topSection: {
+    topView: {
       justifyContent: 'center',
       textAlign: 'left',
       flex: 0.2,
     },
-    middleSection: {
+    middleView: {
       flex: 0.7,
+      width: 300,
     },
-    bottomSection: {
+    bottomView: {
       flex: 0.1,
       justifyContent: 'flex-end',
     },
@@ -44,25 +45,25 @@ export default function Height({navigation}) {
     <View style={{ flex: 1 }}>
       <ProgressBar progress={0.4} style={styles.progress} color={MD3Colors.error50} />
       <View style={styles.container}>
-        <View style={styles.topSection}>
+        <View style={styles.topView}>
           <CustomText 
               style={"title"}
               variant="headlineSmall" 
               text="身長はいくつですか？" 
           />
         </View>
-        <View style={styles.middleSection}>
+        <View style={styles.middleView}>
           <RadioButton 
             items={heightType} 
             value={height} 
             setValue={setHeight}/>
         </View>
-        <View style={styles.bottomSection}>
+        <View style={styles.bottomView}>
           <Button 
             type="long" 
             title="次へ" 
             onPress={() => {
-              myContext.height = height;
+              myContext.height = heightType.indexOf(height);
               navigation.navigate('BodyType')
               }} 
           />

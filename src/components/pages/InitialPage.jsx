@@ -55,6 +55,9 @@ export default function InitialPage({navigation}) {
             <Button mode="text" onPress={() => navigation.navigate('LoadingPage')}>
                 로딩페이지
             </Button>
+            <Button mode="text" onPress={() => navigation.navigate('Main')}>
+                    Main
+            </Button>
         </View>
     );
 }

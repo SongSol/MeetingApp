@@ -16,15 +16,15 @@ export default function Email({navigation}) {
       padding: 20,
       flexDirection: 'column',
     },
-    topSection: {
+    topView: {
       justifyContent: 'center',
       textAlign: 'left',
       flex: 0.2,
     },
-    middleSection: {
+    middleView: {
       flex: 0.7,
     },
-    bottomSection: {
+    bottomView: {
       flex: 0.1,
       justifyContent: 'flex-end',
     },
@@ -38,7 +38,7 @@ export default function Email({navigation}) {
     
   return (
     <View style={styles.container}>
-      <View style={styles.topSection}>
+      <View style={styles.topView}>
         <CustomText 
           style={"title"}
           variant="headlineSmall" 
@@ -50,14 +50,14 @@ export default function Email({navigation}) {
           text="Emailを入力してください。" 
         />
       </View>
-      <View style={styles.middleSection}>
+      <View style={styles.middleView}>
         <TextInput 
           value={email}
           onChangeText={setEmail}
           label="Email"
         />
       </View>
-      <View style={styles.bottomSection}>
+      <View style={styles.bottomView}>
         <Button 
           title="次へ"
           type="long"

@@ -32,7 +32,7 @@ export default function SignInPage({navigation}) {
       )
       response.data == 1 ? navigation.navigate('Main') : alert("login失敗");
     } catch(e){
-        alert("login失敗");
+        alert("login失敗!");
       console.log(e);
     }
   }
@@ -40,8 +40,8 @@ export default function SignInPage({navigation}) {
   return (
     <View style={styles.container}>
       <CustomText 
-        style="title"
-        text="EMAIL"
+        style={"title"}
+        text={"EMAIL"}
       />
       <TextInput 
         value={email}
@@ -49,14 +49,17 @@ export default function SignInPage({navigation}) {
         label="email" 
       />
       <CustomText 
-        style="title"
-        text="PASSWORD"
-      />
+        style={"title"}
+        text={"PASSWORD"}/>
       <TextInput 
         onChangeText={setPassword} 
         label="password" 
       />
-      <Button type="long" title="ログイン" onPress={() => postSignIn(email, password)} />
+      <Button 
+        type="long" 
+        title="ログイン" 
+        onPress={() => postSignIn(email, password)} 
+      />
     </View>
   );
 }

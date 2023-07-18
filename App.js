@@ -24,26 +24,29 @@ import { Provider } from 'react-native-paper';
 import TagSelect from '@components/pages/TagSelect';
 import Main from '@components/pages/Main';
 import AppContext from '@components/atoms/AppContext';
-import BottomNavigation from '@components/pages/BottomNavigation';
 import SocialList from '@components/pages/Social/List';
 // import {View, Button, Image, StyleSheet, Text} from 'react-native';
+// import BottomNavigation from '@components/pages/BottomNavigation';
+
 
 export default function App() {
 
   const Stack = createNativeStackNavigator();
   const signUpInfo = {
-    phone: '',
     email: '',
     password: '',
-    gender: '',
+    phone: '',
     nickname: '',
+    userid: '', 
     birthdate: '',
+    gender: '',
     height: '',
     bodytype: '',
     address: '',
     job: '',
     annualsalary: '',
-    offday: ''
+    offday: '',
+    tag: ''
   }
   return (
     <AppContext.Provider value={signUpInfo}>
@@ -71,7 +74,7 @@ export default function App() {
             <Stack.Screen name="OffDay" component={OffDay} />
             <Stack.Screen name="TagSelect" component={TagSelect} />
             <Stack.Screen name="Main" component={Main} />
-            <Stack.Screen name="BottomNavigation" component={BottomNavigation} />
+            {/* <Stack.Screen name="BottomNavigation" component={BottomNavigation} /> */}
             <Stack.Screen name="ChatMain" component={ChatMain} />
             <Stack.Screen name="SocialList" component={SocialList} />
           </Stack.Navigator>

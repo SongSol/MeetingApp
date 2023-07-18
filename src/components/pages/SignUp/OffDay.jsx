@@ -17,15 +17,16 @@ export default function OffDay({navigation}) {
       padding: 20,
       flexDirection: 'column',
     },
-    topSection: {
+    topView: {
       justifyContent: 'center',
       textAlign: 'left',
       flex: 0.2,
     },
-    middleSection: {
+    middleView: {
       flex: 0.7,
+      width: 300,
     },
-    bottomSection: {
+    bottomView: {
       flex: 0.1,
       justifyContent: 'flex-end',
     },
@@ -41,7 +42,7 @@ export default function OffDay({navigation}) {
     }
   });
 
-  const OffDayType = Object.values(require('@assets/signUpDataList/OffDayType.json'));
+  const offDayType = Object.values(require('@assets/signUpDataList/OffDayType.json'));
   const [offday, setOffday] = useState();
   const myContext = useContext(AppContext);
   
@@ -49,27 +50,27 @@ export default function OffDay({navigation}) {
     <View style={{ flex: 1 }}>
       <ProgressBar progress={0.9} style={styles.progress} color={MD3Colors.error50} />
       <View style={styles.container}>
-        <View style={styles.topSection}>
+        <View style={styles.topView}>
           <CustomText 
             style={"title"}
             variant="headlineSmall" 
             text="お休みはいつですか" 
           />
         </View>
-        <View style={styles.middleSection}>
+        <View style={styles.middleView}>
           <RadioButton
-            items={OffDayType}
+            items={offDayType}
             value={offday}
             setValue={setOffday}
           />
         </View>
-        <View style={styles.bottomSection}>
+        <View style={styles.bottomView}>
           <Button 
             type="long" 
             title="次へ" 
             onPress={() => {
-              myContext.offday = offday;
-              navigation.navigate('JudgeLookPage');
+              myContext.offday = offDayType.indexOf(offday);
+              navigation.navigate('TagSelect');
             }} 
           />
         </View>

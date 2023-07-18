@@ -18,15 +18,16 @@ export default function Address({navigation}) {
       padding: 20,
       flexDirection: 'column',
     },
-    topSection: {
+    topView: {
       justifyContent: 'center',
       textAlign: 'left',
       flex: 0.2,
     },
-    middleSection: {
+    middleView: {
       flex: 0.7,
+      width: 300,
     },
-    bottomSection: {
+    bottomView: {
       flex: 0.1,
       justifyContent: 'flex-end',
     },
@@ -42,7 +43,7 @@ export default function Address({navigation}) {
     }
   });
 
-  const AddressType = Object.values(require('@assets/signUpDataList/AddressType.json'));
+  const addressType = Object.values(require('@assets/signUpDataList/AddressType.json'));
   const [address, setAddress] = useState();
   const myContext = useContext(AppContext);
 
@@ -50,26 +51,26 @@ export default function Address({navigation}) {
     <View style={{ flex: 1 }}>
       <ProgressBar progress={0.6} style={styles.progress} color={MD3Colors.error50} />
       <View style={styles.container}>
-        <View style={styles.topSection}>
+        <View style={styles.topView}>
           <CustomText 
             style={"title"}
             variant="headlineSmall" 
             text="お住まいはどこですか" 
           />
         </View>
-        <View style={styles.middleSection}>
+        <View style={styles.middleView}>
           <RadioButton 
-            items={AddressType}
+            items={addressType}
             value={address}
             setValue={setAddress}
           />
         </View>
-        <View style={styles.bottomSection}>
+        <View style={styles.bottomView}>
           <Button 
               type="long" 
               title="次へ" 
               onPress={() => {
-                myContext.address = address;
+                myContext.address = addressType.indexOf(address);
                 navigation.navigate('Job')
               }} 
             />

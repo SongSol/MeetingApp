@@ -17,15 +17,15 @@ export default function BirthDate({navigation}) {
       padding: 20,
       flexDirection: 'column',
     },
-    topSection: {
+    topView: {
       justifyContent: 'center',
       textAlign: 'left',
       flex: 0.2,
     },
-    middleSection: {
+    middleView: {
       flex: 0.7,
     },
-    bottomSection: {
+    bottomView: {
       flex: 0.1,
       justifyContent: 'flex-end',
     },
@@ -45,7 +45,7 @@ export default function BirthDate({navigation}) {
     <View style={{ flex: 1 }}>
       <ProgressBar progress={0.2} style={styles.progress} color={MD3Colors.error50} />
       <View style={styles.container}>
-        <View style={styles.topSection}>
+        <View style={styles.topView}>
           <CustomText 
             style={"title"}
             variant="headlineSmall" 
@@ -57,13 +57,13 @@ export default function BirthDate({navigation}) {
             text="例)19970601" 
           />
         </View>
-        <View style={styles.middleSection}>
+        <View style={styles.middleView}>
         <TextInput
           value={birthdate}
           onChangeText={setBirthdate}
           label="生年月日"/>
         </View>
-        <View style={styles.bottomSection}>
+        <View style={styles.bottomView}>
         <Button
           type="long" 
           title="次へ" 
