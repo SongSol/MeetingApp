@@ -26,7 +26,6 @@ import Main from '@components/pages/Main';
 import AppContext from '@components/atoms/AppContext';
 import BottomNavigation from '@components/pages/BottomNavigation';
 import SocialList from '@components/pages/Social/List';
-import ChatMain from '@components/pages/ChatMain';
 // import {View, Button, Image, StyleSheet, Text} from 'react-native';
 
 export default function App() {
@@ -75,7 +74,6 @@ export default function App() {
             <Stack.Screen name="BottomNavigation" component={BottomNavigation} />
             <Stack.Screen name="ChatMain" component={ChatMain} />
             <Stack.Screen name="SocialList" component={SocialList} />
-            <Stack.Screen name="LoadingPage" component={LoadingPage} />
           </Stack.Navigator>
         </NavigationContainer>
       </Provider>

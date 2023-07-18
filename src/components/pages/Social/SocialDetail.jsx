@@ -1,9 +1,10 @@
 import * as React from 'react';
 import {View, StyleSheet, ScrollView } from 'react-native';
-import SocialTemplate from '@components/templates/Social/SocialTemplate';
-import { Text } from 'react-native-paper';
+import SocialDetailTemplate from '@components/templates/Social/SocialDetailTemplate';
+import SocialDetailTextInputOrganisms from '@components/organisms/Social/SocialDetailTextInputOrganisms';
+import { Text, TextInput } from 'react-native-paper';
 
-export default function List({navigation}) {
+export default function SocialDetail({navigation}) {
 
     const styles = StyleSheet.create({
         container: {  
@@ -21,7 +22,7 @@ export default function List({navigation}) {
 
         footer: {
           height: 70,
-          backgroundColor: '#ABCDEF'
+          marginBottom: 20,
         }
       });
 
@@ -29,13 +30,11 @@ export default function List({navigation}) {
     return (
         <View style={styles.container}>
             <ScrollView>
-                <Text style={styles.title}>커뮤니티</Text>
-                <SocialTemplate
-                    onPress={() => navigation.navigate('SocialDetail')}
-                ></SocialTemplate>
+                <Text style={styles.title}>Detail</Text>
+                <SocialDetailTemplate></SocialDetailTemplate>
             </ScrollView>
             <View style={styles.footer}>
-                <Text>Footer</Text>
+                <SocialDetailTextInputOrganisms/>
             </View>
         </View>
     );

@@ -3,17 +3,17 @@ import {View, StyleSheet, ScrollView, Dimensions } from 'react-native';
 import axios from 'axios';
 import SocialListOrganisms from '@components/organisms/Social/SocialListOrganisms';
 
-const JudgeLookTemplate = props =>  {
+const SocialTemplate = props =>  {
     const [data, setData] = useState([]);
 
     useEffect(() => {
         const fetchData = async () => {
-        try {
-            const response = await axios.get('https://q1nnafsjxe.execute-api.ap-northeast-1.amazonaws.com/getCategory');
-            setData(response.data['body']);
-        } catch (error) {
-            console.error(error);
-        }
+            try {
+                const response = await axios.get('https://p89d503hg2.execute-api.ap-northeast-1.amazonaws.com/Category');
+                setData(response.data['body']);
+            } catch (error) {
+                console.error(error);
+            }
         };
 
         fetchData();
@@ -39,8 +39,10 @@ const JudgeLookTemplate = props =>  {
                 {data.map(tag =>{
                     return (
                         <SocialListOrganisms 
-                        styles= {styles.social_list}
-                        title = {tag.title}/>
+                            styles={styles.social_list}
+                            onPress={props.onPress}
+                            tag={tag}
+                        />
                     )
                 })}
             </ScrollView>
@@ -52,4 +54,4 @@ const JudgeLookTemplate = props =>  {
     }
 }
 
-export default JudgeLookTemplate;
+export default SocialTemplate;

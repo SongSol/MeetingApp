@@ -2,10 +2,10 @@ import {View,
         StyleSheet,
         Text,
         Dimensions,
+        TouchableOpacity
         } from 'react-native';
-import Button from '@components/atoms/Button';
 
-const JudgeLookTemplate = props =>  {
+const SocialListOrganisms = (props) =>  {
 
     const color = require('@assets/color.json');
 
@@ -18,6 +18,11 @@ const JudgeLookTemplate = props =>  {
             marginTop: 5,
             marginBottom: 5,
             width: width,
+        },
+
+        button: {
+            width: width,
+            padding: 10,
         },
 
         view_social: {
@@ -50,20 +55,20 @@ const JudgeLookTemplate = props =>  {
     });
 
     return (
-            <View style={styles.container}>
-                <View style={styles.view_social}>
-                    <View style={styles.view_social_info}>
-                        <View style={styles.view_image}>
-                            <View style={styles.image_profile}></View>
-                            <View style={styles.image_profile}></View>
-                            <View style={styles.image_profile}></View>
-                        </View>
-                        <Text>+253</Text>
+        <TouchableOpacity style={styles.container} onPress={props.onPress}>
+            <View style={styles.view_social}>
+                <View style={styles.view_social_info}>
+                    <View style={styles.view_image}>
+                        <View style={styles.image_profile}></View>
+                        <View style={styles.image_profile}></View>
+                        <View style={styles.image_profile}></View>
                     </View>
-                    <Text style={styles.title}>{props.title}</Text>
+                    <Text>+253</Text>
                 </View>
+                <Text style={styles.title}>{props.tag.title}</Text>
             </View>
+        </TouchableOpacity>
     );
 }
 
-export default JudgeLookTemplate;
+export default SocialListOrganisms;
