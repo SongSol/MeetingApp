@@ -1,7 +1,8 @@
 import * as React from 'react';
 import {View, StyleSheet, ScrollView } from 'react-native';
 import SocialDetailTemplate from '@components/templates/Social/SocialDetailTemplate';
-import { Text } from 'react-native-paper';
+import SocialDetailTextInputOrganisms from '@components/organisms/Social/SocialDetailTextInputOrganisms';
+import { Text, TextInput } from 'react-native-paper';
 
 export default function SocialDetail({navigation}) {
 
@@ -21,7 +22,7 @@ export default function SocialDetail({navigation}) {
 
         footer: {
           height: 70,
-          backgroundColor: '#ABCDEF'
+          marginBottom: 20,
         }
       });
 
@@ -33,7 +34,7 @@ export default function SocialDetail({navigation}) {
                 <SocialDetailTemplate></SocialDetailTemplate>
             </ScrollView>
             <View style={styles.footer}>
-                <Text>Footer</Text>
+                <SocialDetailTextInputOrganisms/>
             </View>
         </View>
     );

@@ -9,7 +9,7 @@ const SocialTemplate = props =>  {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get('https://q1nnafsjxe.execute-api.ap-northeast-1.amazonaws.com/getCategory');
+                const response = await axios.get('https://p89d503hg2.execute-api.ap-northeast-1.amazonaws.com/Category');
                 setData(response.data['body']);
             } catch (error) {
                 console.error(error);
