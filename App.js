@@ -25,6 +25,8 @@ import TagSelect from '@components/pages/TagSelect';
 import Main from '@components/pages/Main';
 import AppContext from '@components/atoms/AppContext';
 import SocialList from '@components/pages/Social/List';
+import ChatMain from '@components/pages/ChatMain';
+import Chat from '@components/pages/Chat';
 // import {View, Button, Image, StyleSheet, Text} from 'react-native';
 // import BottomNavigation from '@components/pages/BottomNavigation';
 
@@ -77,10 +79,10 @@ export default function App() {
             {/* <Stack.Screen name="BottomNavigation" component={BottomNavigation} /> */}
             <Stack.Screen name="ChatMain" component={ChatMain} />
             <Stack.Screen name="SocialList" component={SocialList} />
+            <Stack.Screen name="Chat" component={Chat} />
           </Stack.Navigator>
         </NavigationContainer>
       </Provider>
     </AppContext.Provider>
   );
 }
-
