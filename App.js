@@ -28,6 +28,8 @@ import SocialList from '@components/pages/Social/List';
 import BottomNavigation from '@components/pages/BottomNavigation';
 import UserDetail from '@components/pages/UserDetail';
 //import MainJudge from '@components/pages/MainJudge';
+import ChatMain from '@components/pages/ChatMain';
+import Chat from '@components/pages/Chat';
 // import {View, Button, Image, StyleSheet, Text} from 'react-native';
 // import BottomNavigation from '@components/pages/BottomNavigation';
 
@@ -83,10 +85,10 @@ export default function App() {
             <Stack.Screen name="BottomNavigation" component={BottomNavigation} />
             <Stack.Screen name="UserDetail" component={UserDetail} />
             {/* <Stack.Screen name="MainJudge" component={MainJudge} /> */}
+            <Stack.Screen name="Chat" component={Chat} />
           </Stack.Navigator>
         </NavigationContainer>
       </Provider>
     </AppContext.Provider>
   );
 }
-
