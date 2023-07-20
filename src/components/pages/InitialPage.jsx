@@ -58,6 +58,9 @@ export default function InitialPage({navigation}) {
             <Button mode="text" onPress={() => navigation.navigate('Main')}>
                     Main
             </Button>
+            <Button mode="text" onPress={() => navigation.navigate('UserDetail')}>
+                    UserDetail
+            </Button>
         </View>
     );
 }

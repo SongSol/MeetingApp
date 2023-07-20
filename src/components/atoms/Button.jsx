@@ -2,7 +2,7 @@ import React from 'react';
 import { Text, View, StyleSheet, Pressable } from 'react-native';
 import { Button } from 'react-native-paper';
 
-export default function ButtonAtom({ style, title, type, onPress }) {
+export default function ButtonAtom({ icon, title, w, h, c, onPress}) {
     const styles = StyleSheet.create({
         button: {
           alignItems: 'center',
@@ -13,14 +13,14 @@ export default function ButtonAtom({ style, title, type, onPress }) {
           elevation: 3,
           backgroundColor: 'gray',
         },
-        pinkbutton: {
+        customizebutton: {
             alignItems: 'center',
             justifyContent: 'center',
-            width:200,
-            height:50,
+            width:Number(w),
+            height:Number(h),
             borderRadius: 4,
             elevation: 3,
-            backgroundColor: '#FF71A6',
+            backgroundColor: c ,
           },
         bluebutton: {
             alignItems: 'center',
@@ -40,35 +40,43 @@ export default function ButtonAtom({ style, title, type, onPress }) {
           color: 'white'
         },
       });
-    switch(type) {
-        case 'Pink':
-            return (
-                <Button style={styles.pinkbutton} 
-                  onPress={onPress} icon={icon}>
-                  <Text style={styles.text}>{title}</Text>
-                </Button>
-            );
-        case 'Blue':
-            return (
-                <Button style={styles.bluebutton} 
-                  onPress={onPress} icon={icon}>
-                  <Text style={styles.text}>{title}</Text>
-                </Button>
-            );
-        case 'Small':
-            return (
-                <Button style={styles.smallbutton} 
-                  onPress={onPress}>
-                  <Text style={styles.text}>{title}</Text>
-                </Button>
-            );
-        default:
-            return (
-                <Button style={styles.button} 
-                  onPress={onPress} >
-                  <Text style={styles.text}>{title}</Text>
-                </Button>
+      if(w == "" || h == "" || c == ""){
+        return (
+              <Button style={styles.button} 
+                onPress={onPress} icon={icon}>
+                <Text style={styles.text}>{title}</Text>
+              </Button>
               );
-    }
+      }else{
+        return (
+          <Button style={styles.customizebutton}
+          onPress={onPress} icon={icon}>
+          <Text style={styles.text}>{title}</Text>
+          </Button>
+          );
+      }
+    // switch(type) {
+    //     case 'Pink':
+    //         return (
+    //             <Button style={styles.pinkbutton} 
+    //               onPress={onPress} icon={icon}>
+    //               <Text style={styles.text}>{title}</Text>
+    //             </Button>
+    //         );
+    //     case 'Blue':
+    //         return (
+    //             <Button style={styles.bluebutton} 
+    //               onPress={onPress} icon={icon}>
+    //               <Text style={styles.text}>{title}</Text>
+    //             </Button>
+    //         );
+    //     default:
+    //         return (
+    //             <Button style={styles.button} 
+    //               onPress={onPress} >
+    //               <Text style={styles.text}>{title}</Text>
+    //             </Button>
+    //           );
+    // }
 }
 

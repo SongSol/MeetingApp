@@ -333,7 +333,7 @@ export default function ImagePickerExample() {
         </View>
       </View>
       <View style={{margin:10}}>
-      <Button icon={icon} title={title} type='Pink' onPress={uploadFile} style={{}} />
+      <Button icon={icon} title={title} w='200' h='50' c='#FF71A6' onPress={uploadFile} style={{}} />
       </View>
     </View>
     

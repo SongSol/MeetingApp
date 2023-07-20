@@ -1,5 +1,6 @@
 import { useContext, useState } from 'react';
 import { ProgressBar, MD3Colors } from 'react-native-paper';
+//import BodyTypeData from '@assets/SignUpDataList/BodyTypeData';
 import {View, StyleSheet} from 'react-native';
 
 import AppContext from '@components/atoms/AppContext';

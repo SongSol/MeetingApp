@@ -25,7 +25,7 @@ export default function InitialPage({navigation}) {
                 다시 도전해주세요!!
             </Text>
 			<View style={{margin:30}}>
-			<Button title={title} type='Long' onPress={() => navigation.navigate('PictureUploadPage')} />
+			<Button title={title} w="" h="" c="" onPress={() => navigation.navigate('PictureUploadPage')} />
 			</View>
         	<StatusBar style="auto" />
 		</View>

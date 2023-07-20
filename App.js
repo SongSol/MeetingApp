@@ -25,6 +25,9 @@ import TagSelect from '@components/pages/TagSelect';
 import Main from '@components/pages/Main';
 import AppContext from '@components/atoms/AppContext';
 import SocialList from '@components/pages/Social/List';
+import BottomNavigation from '@components/pages/BottomNavigation';
+import UserDetail from '@components/pages/UserDetail';
+//import MainJudge from '@components/pages/MainJudge';
 // import {View, Button, Image, StyleSheet, Text} from 'react-native';
 // import BottomNavigation from '@components/pages/BottomNavigation';
 
@@ -77,6 +80,9 @@ export default function App() {
             {/* <Stack.Screen name="BottomNavigation" component={BottomNavigation} /> */}
             <Stack.Screen name="ChatMain" component={ChatMain} />
             <Stack.Screen name="SocialList" component={SocialList} />
+            <Stack.Screen name="BottomNavigation" component={BottomNavigation} />
+            <Stack.Screen name="UserDetail" component={UserDetail} />
+            {/* <Stack.Screen name="MainJudge" component={MainJudge} /> */}
           </Stack.Navigator>
         </NavigationContainer>
       </Provider>
