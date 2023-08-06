@@ -8,7 +8,7 @@ import Button from '@components/atoms/Button';
 
 
 export default function Password({navigation}){
-    
+    const color = require('@assets/color.json');
     const styles = StyleSheet.create({
         container: {
             flex: 1,
@@ -34,9 +34,11 @@ export default function Password({navigation}){
     });
     const myContext = useContext(AppContext);
     const [password, setPassword] = useState(''); 
+    const [nextButtonDisabled, setNextButtonDisabled] = useState(true);
+
     useEffect(() => {
-        // console.log(myContext);
-    },[]);
+        password ? setNextButtonDisabled(false) : setNextButtonDisabled(true);
+    },[password]);
     
     return (
         <View style={styles.container}>
@@ -55,12 +57,12 @@ export default function Password({navigation}){
                 />
             </View>
             <View style={styles.bottomView}>
-                <Button 
-                    title="次へ"
-                    type="long"
+                <Button
+                    title="次へ" w='300' h='50' c={nextButtonDisabled ? color.light_gray : color.red}
+                    disabled={nextButtonDisabled}
                     onPress={() => {
-                    myContext.password = password;
-                    navigation.navigate('Phone');
+                        myContext.password = password;
+                        navigation.navigate('Phone');
                     }}
                 />
             </View>

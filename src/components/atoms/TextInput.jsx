@@ -23,6 +23,7 @@ export default function TextInputAtom({ value, onChangeText, label }) {
       onChangeText={onChangeText}
       secureTextEntry={label === "password" ? true : false}
       right={label === "password" ? <TextInput.Icon icon="eye"/> : null}
+      autoCapitalize = 'none'
     />    
 );
 }

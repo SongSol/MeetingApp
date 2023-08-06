@@ -1,4 +1,4 @@
-import  { useState, useCallback }  from 'react';
+import  { useState, useCallback, useEffect }  from 'react';
 import { View, StyleSheet, Text, RefreshControl, ScrollView, TouchableOpacity } from 'react-native';
 import { Card } from 'react-native-paper';
 import axios from 'axios';
@@ -37,31 +37,55 @@ export default function Main({}) {
     },
     cardCover: {
       margin: 10,
+    },
+    text: {
+      marginLeft: 10,
+      justifyContent: 'center', // 안에 적는 글자 중앙정렬
+      alignItems: 'center'
     }
   });
 
   const [refreshing, setRefreshing] = useState(false);
+  const [users1, setUsers1] = useState([]);
+  const [users2, setUsers2] = useState([]);
 
   const handleClick = () => {
       console.log("dddd");
       alert("ddd");
-      // getUser();
+      
   }
-  const getUser = async () => {
-    try { 
-      const response = await axios.get(
-        'https://gbp4u8anb3.execute-api.ap-northeast-1.amazonaws.com/User'
-      )
-      console.log(response);
-    } catch(e){
-      alert("login失敗!");
-      console.log(e);
+
+  useEffect(() => {
+    const getUser = async () => {
+      try { 
+        const response = await axios.get(
+          'https://gbp4u8anb3.execute-api.ap-northeast-1.amazonaws.com/User'
+        )
+        const halfLength = Math.ceil(response.data.body.length / 2);
+
+        const extractedData1 = response.data.body.slice(0, halfLength).map(user => ({
+          id: user.id,
+          nickname: user.nickname
+        }));
+        setUsers1(extractedData1);
+
+        const extractedData2 = response.data.body.slice(halfLength).map(user => ({
+          id: user.id,
+          nickname: user.nickname
+        }));
+        setUsers2(extractedData2);
+
+      } catch(e){
+        alert("getUser 실패!");
+        console.log(e);
+      }
     }
-  }
+    getUser();
+  }, []);
 
   const onRefresh = useCallback(() => {
       setRefreshing(true);
-      setTimeout(() => setRefreshing(false), 2000);
+      setTimeout(() => setRefreshing(false), 1000);
   }, []);
 
   return (    
@@ -74,26 +98,21 @@ export default function Main({}) {
         </View>
         <View style={styles.middleView}>
           <Card style={styles.card}>
-            <Card.Cover style={styles.cardCover} source={{ uri: 'https://picsum.photos/700'}} onPress={handleClick}/>
-            <Text>    이름 나이</Text>
-            <Card.Cover style={styles.cardCover} source={{ uri: 'https://picsum.photos/701'}} onPress={handleClick}/>
-            <Card.Cover style={styles.cardCover} source={{ uri: 'https://picsum.photos/702'}} onPress={handleClick}/>
-            <Card.Cover style={styles.cardCover} source={{ uri: 'https://picsum.photos/703'}} onPress={handleClick}/>
-            <Card.Cover style={styles.cardCover} source={{ uri: 'https://picsum.photos/704'}} onPress={handleClick}/>
-            <Card.Cover style={styles.cardCover} source={{ uri: 'https://picsum.photos/705'}} onPress={handleClick}/>
-            <Card.Cover style={styles.cardCover} source={{ uri: 'https://picsum.photos/706'}} onPress={handleClick}/>
-            <Card.Cover style={styles.cardCover} source={{ uri: 'https://picsum.photos/707'}} onPress={handleClick}/>
+            {users1.map((user) => (
+              <>
+                <Card.Cover style={styles.cardCover} source={{ uri: `http://hyple.s3.ap-northeast-1.amazonaws.com/public/profile_image/${user.id}.png`}} onPress={handleClick}/>
+                <Text style={styles.text}>{user.nickname}</Text>
+              </>
+            ))}
+            
           </Card>
           <Card style={styles.card}>
-            <Card.Cover style={styles.cardCover} source={{ uri: 'https://picsum.photos/708'}} onPress={handleClick}/>
-            <Text>    이름 나이</Text>
-            <Card.Cover style={styles.cardCover} source={{ uri: 'https://picsum.photos/709'}} onPress={handleClick}/>
-            <Card.Cover style={styles.cardCover} source={{ uri: 'https://picsum.photos/710'}} onPress={handleClick}/>
-            <Card.Cover style={styles.cardCover} source={{ uri: 'https://picsum.photos/711'}} onPress={handleClick}/>
-            <Card.Cover style={styles.cardCover} source={{ uri: 'https://picsum.photos/712'}} onPress={handleClick}/>
-            <Card.Cover style={styles.cardCover} source={{ uri: 'https://picsum.photos/713'}} onPress={handleClick}/>
-            <Card.Cover style={styles.cardCover} source={{ uri: 'https://picsum.photos/714'}} onPress={handleClick}/>
-            <Card.Cover style={styles.cardCover} source={{ uri: 'https://picsum.photos/715'}} onPress={handleClick}/>
+            {users2.map((user) => (
+              <>
+                <Card.Cover style={styles.cardCover} source={{ uri: `http://hyple.s3.ap-northeast-1.amazonaws.com/public/profile_image/${user.id}.png`}} onPress={handleClick}/>
+                <Text style={styles.text}>{user.nickname}</Text>
+              </>
+            ))}
           </Card>
         </View>
       </ScrollView>

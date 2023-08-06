@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { useContext, useState, useEffect } from 'react';
 import { View, StyleSheet } from 'react-native';
 import { ProgressBar, MD3Colors } from 'react-native-paper';
 
@@ -8,6 +8,7 @@ import CustomText from '@components/atoms/CustomText';
 import RadioButton from '@components/atoms/RadioButton';
 
 export default function Gender({navigation}) {
+  const color = require('@assets/color.json');
   const styles = StyleSheet.create({
     container: {
       flex: 1,
@@ -43,6 +44,11 @@ export default function Gender({navigation}) {
   const genderList = ["男性", "女性"];
   const [gender, setGender] = useState();
   const myContext = useContext(AppContext);
+  const [nextButtonDisabled, setNextButtonDisabled] = useState(true);
+
+  useEffect(() => {
+    gender ? setNextButtonDisabled(false) : setNextButtonDisabled(true);
+  },[gender]);
 
   return (
     <View style={{ flex: 1 }}>
@@ -60,8 +66,8 @@ export default function Gender({navigation}) {
         </View>
         <View style={styles.bottomView}>
           <Button
-            type="long"
-            title="次へ" 
+            title="次へ" w='300' h='50' c={nextButtonDisabled ? color.light_gray : color.red}
+            disabled={nextButtonDisabled}
             onPress={() => {
               myContext.gender = gender === "男性" ? 1 : 2 ;
               // navigation.navigate('JudgeLookPage')}} 

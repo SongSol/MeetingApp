@@ -8,6 +8,7 @@ import AppContext from '@components/atoms/AppContext';
 import CustomText from '@components/atoms/CustomText';
 
 export default function Height({navigation}) {
+  const color = require('@assets/color.json');
   const styles = StyleSheet.create({
     container: {
       flex: 1,
@@ -40,6 +41,11 @@ export default function Height({navigation}) {
   const heightType = Object.values(require('@assets/signUpDataList/HeightType.json'));
   const myContext = useContext(AppContext);
   const [height, setHeight] = useState(''); 
+  const [nextButtonDisabled, setNextButtonDisabled] = useState(true);
+
+  useEffect(() => {
+    height ? setNextButtonDisabled(false) : setNextButtonDisabled(true);
+  },[height]);
 
   return (
     <View style={{ flex: 1 }}>
@@ -60,10 +66,10 @@ export default function Height({navigation}) {
         </View>
         <View style={styles.bottomView}>
           <Button 
-            type="long" 
-            title="次へ" 
+            title="次へ" w='300' h='50' c={nextButtonDisabled ? color.light_gray : color.red}
+            disabled={nextButtonDisabled}
             onPress={() => {
-              myContext.height = heightType.indexOf(height);
+              myContext.height = heightType.indexOf(height) + 1;
               navigation.navigate('BodyType')
               }} 
           />

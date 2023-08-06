@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { useContext, useState, useEffect } from 'react';
 import {View, StyleSheet} from 'react-native';
 import { ProgressBar, MD3Colors } from 'react-native-paper';
 
@@ -8,6 +8,7 @@ import CustomText from '@components/atoms/CustomText';
 import RadioButton from '@components/atoms/RadioButton';
 
 export default function Job({navigation}) {
+  const color = require('@assets/color.json');
   const styles = StyleSheet.create({
     container: {
       flex: 1,
@@ -45,6 +46,11 @@ export default function Job({navigation}) {
   const jobType = Object.values(require('@assets/signUpDataList/JobType.json'));
   const [job, setJob] = useState();
   const myContext = useContext(AppContext);
+  const [nextButtonDisabled, setNextButtonDisabled] = useState(true);
+
+  useEffect(() => {
+    job ? setNextButtonDisabled(false) : setNextButtonDisabled(true);
+  },[job]);
 
   return (
     <View style={{ flex: 1 }}>
@@ -66,10 +72,10 @@ export default function Job({navigation}) {
         </View>
         <View style={styles.bottomView}>
           <Button 
-            type="long" 
-            title="次へ" 
+            title="次へ" w='300' h='50' c={nextButtonDisabled ? color.light_gray : color.red}
+            disabled={nextButtonDisabled}
             onPress={() => {
-              myContext.job = jobType.indexOf(job);
+              myContext.job = jobType.indexOf(job) + 1;
               navigation.navigate('AnnualSalary');
             }} 
           />

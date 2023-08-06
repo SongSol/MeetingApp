@@ -2,7 +2,7 @@ import React from 'react';
 import { Text, View, StyleSheet, Pressable } from 'react-native';
 import { Button } from 'react-native-paper';
 
-export default function ButtonAtom({ icon, title, w, h, c, onPress}) {
+export default function ButtonAtom({ icon, title, w, h, c, onPress, disabled}) {
     const styles = StyleSheet.create({
         button: {
           alignItems: 'center',
@@ -42,14 +42,14 @@ export default function ButtonAtom({ icon, title, w, h, c, onPress}) {
       });
       if(w == "" || h == "" || c == ""){
         return (
-              <Button style={styles.button} 
+              <Button style={styles.button} disabled={disabled}
                 onPress={onPress} icon={icon}>
                 <Text style={styles.text}>{title}</Text>
               </Button>
               );
       }else{
         return (
-          <Button style={styles.customizebutton}
+          <Button style={styles.customizebutton} disabled={disabled}
           onPress={onPress} icon={icon}>
           <Text style={styles.text}>{title}</Text>
           </Button>

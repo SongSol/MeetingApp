@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { useContext, useState, useEffect } from 'react';
 import {View, StyleSheet} from 'react-native';
 import { ProgressBar, MD3Colors } from 'react-native-paper';
 import axios from 'axios';
@@ -9,6 +9,7 @@ import AppContext from '@components/atoms/AppContext';
 import Button from '@components/atoms/Button';
 
 export default function Nickname({navigation}) {
+  const color = require('@assets/color.json');
   const styles = StyleSheet.create({
     container: {
       flex: 1,
@@ -41,6 +42,11 @@ export default function Nickname({navigation}) {
   });
   const myContext = useContext(AppContext);
   const [nickname, setNickname] = useState(''); 
+  const [nextButtonDisabled, setNextButtonDisabled] = useState(true);
+
+  useEffect(() => {
+    nickname ? setNextButtonDisabled(false) : setNextButtonDisabled(true);
+  },[nickname]);
 
   const postSignUp = async () => {
     try { 
@@ -83,8 +89,8 @@ export default function Nickname({navigation}) {
         </View>
         <View style={styles.bottomView}>
           <Button
-            title="次へ"
-            type="long"
+            title="次へ" w='300' h='50' c={nextButtonDisabled ? color.light_gray : color.red}
+            disabled={nextButtonDisabled}
             onPress={() => {
               myContext.nickname = nickname;
               postSignUp();

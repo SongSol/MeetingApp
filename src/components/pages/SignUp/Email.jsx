@@ -7,6 +7,7 @@ import CustomText from '@components/atoms/CustomText';
 import TextInput from '@components/atoms/TextInput';
 
 export default function Email({navigation}) {
+  const color = require('@assets/color.json');
   const styles = StyleSheet.create({
     container: {
       flex: 1,
@@ -32,9 +33,11 @@ export default function Email({navigation}) {
 
   const myContext = useContext(AppContext);
   const [email, setEmail] = useState(''); 
+  const [nextButtonDisabled, setNextButtonDisabled] = useState(true);
+
   useEffect(() => {
-    // console.log(myContext);
-  },[]);
+    email ? setNextButtonDisabled(false) : setNextButtonDisabled(true);
+  },[email]);
     
   return (
     <View style={styles.container}>
@@ -59,8 +62,8 @@ export default function Email({navigation}) {
       </View>
       <View style={styles.bottomView}>
         <Button 
-          title="次へ"
-          type="long"
+          title="次へ" w='300' h='50' c={nextButtonDisabled ? color.light_gray : color.red}
+          disabled={nextButtonDisabled}
           onPress={() => {
             myContext.email = email;
             navigation.navigate('Password')

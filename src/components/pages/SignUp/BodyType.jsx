@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { useContext, useState, useEffect } from 'react';
 import { ProgressBar, MD3Colors } from 'react-native-paper';
 //import BodyTypeData from '@assets/SignUpDataList/BodyTypeData';
 import {View, StyleSheet} from 'react-native';
@@ -9,6 +9,7 @@ import CustomText from '@components/atoms/CustomText';
 import RadioButton from '@components/atoms/RadioButton';
 
 export default function Weight({navigation}) {
+  const color = require('@assets/color.json');
   const styles = StyleSheet.create({
     container: {
       flex: 1,
@@ -46,6 +47,11 @@ export default function Weight({navigation}) {
   const BodyType = Object.values(require('@assets/signUpDataList/BodyType.json'));
   const [bodytype, setBodytype] = useState();
   const myContext = useContext(AppContext);
+  const [nextButtonDisabled, setNextButtonDisabled] = useState(true);
+
+  useEffect(() => {
+    bodytype ? setNextButtonDisabled(false) : setNextButtonDisabled(true);
+  },[bodytype]);
 
   return (
     <View style={{ flex: 1 }}>
@@ -67,10 +73,10 @@ export default function Weight({navigation}) {
         </View>
         <View style={styles.bottomView}>
           <Button 
-            type="long" 
-            title="次へ" 
+            title="次へ" w='300' h='50' c={nextButtonDisabled ? color.light_gray : color.red}
+            disabled={nextButtonDisabled}
             onPress={() => {
-              myContext.bodytype  = BodyType.indexOf(bodytype);
+              myContext.bodytype  = BodyType.indexOf(bodytype) + 1;
               navigation.navigate('Address')
             }} 
           />

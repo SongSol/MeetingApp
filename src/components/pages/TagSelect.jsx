@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext} from 'react';
 import { View, StyleSheet } from 'react-native';
 import { Chip, Text} from 'react-native-paper';
 import axios from 'axios';
+import AppContext from '@components/atoms/AppContext';
 
 
 export default function TagSelect({navigation}) {
@@ -39,11 +40,48 @@ export default function TagSelect({navigation}) {
     const [data, setData] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
 
+    const myContext = useContext(AppContext);
+    
+    const postUserProfile = async () => {
+        console.log(myContext);
+        try { 
+            const response = await axios.post(
+                'https://3cwoz675a9.execute-api.ap-northeast-1.amazonaws.com/UserProfile'
+                , {
+                    "userid": 75,
+                    "birth_date": "2023-08-05 01:31:50",
+                    "gender": 1,
+                    "height": 1,
+                    "body_type_id": 1,
+                    "address_id": 1,
+                    "job_id": 1,
+                    "salary_id": 1,
+                    "offday": 1,
+                    "drink": 1,
+                    "smoke": true,
+                    "main_profile_image": 1,
+                    "avg_score": 1,
+                    "self_intro": "",
+                    "created_at": "",
+                    "updated_at": "",
+                    "tag": [
+                      2,
+                      6,
+                      10
+                    ]
+                } 
+            )
+            console.log(response.data);
+        } catch(e){
+            alert("post failed");
+            console.log(e);
+        }
+    }
+    
     useEffect(() => {
         const fetchData = async () => {
             try {
                 const response = await axios.get('https://p89d503hg2.execute-api.ap-northeast-1.amazonaws.com/Category');
-                console.log(response.data['body'])
                 setData(response.data['body']);
                 setIsLoading(false);
             } catch (error) {
@@ -68,7 +106,6 @@ export default function TagSelect({navigation}) {
             console.log("No data available")
           )
     )
-    console.log(tags)
 
     const [selectedChips, setSelectedChips] = useState([]);
 
@@ -95,7 +132,12 @@ export default function TagSelect({navigation}) {
                  ))}
             </View>
             <View>
-                <Chip onPress={() => console.log(selectedChips)} style={styles.button} mode="outlined">
+            <Chip onPress={() =>{
+                myContext.tag = selectedChips.map(Number);
+                postUserProfile();
+                navigation.navigate('Main');
+
+                }} style={styles.button} mode="outlined">
                     次へ
                 </Chip>
             </View>

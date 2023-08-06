@@ -7,6 +7,7 @@ import CustomText from '@components/atoms/CustomText';
 import TextInput from '@components/atoms/TextInput';
 
 export default function Phone({navigation}) {
+  const color = require('@assets/color.json');
   const styles = StyleSheet.create({
     container: {
       flex: 1,
@@ -32,9 +33,11 @@ export default function Phone({navigation}) {
 
   const myContext = useContext(AppContext);
   const [phone, setPhone] = useState(''); 
+  const [nextButtonDisabled, setNextButtonDisabled] = useState(true);
+
   useEffect(() => {
-    // console.log(myContext);
-  },[])
+      phone ? setNextButtonDisabled(false) : setNextButtonDisabled(true);
+  },[phone]);
 
   return (
     <View style={styles.container}>
@@ -59,8 +62,8 @@ export default function Phone({navigation}) {
       </View>
       <View style={styles.bottomView}>
         <Button 
-          title="次へ"
-          type="long"
+          title="次へ" w='300' h='50' c={nextButtonDisabled ? color.light_gray : color.red}
+          disabled={nextButtonDisabled}
           onPress={() => {
             myContext.phone = phone;
             navigation.navigate('Nickname');
