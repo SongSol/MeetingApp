@@ -74,8 +74,65 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, TextInput, Button, FlatList } from 'react-native';
 import { GiftedChat } from 'react-native-gifted-chat';
+import { useRoute } from '@react-navigation/native';
 
 const Chat = () => {
+
+  const [data2, setData2] = useState([]);
+  const [isLoading2, setIsLoading2] = useState(true);
+  // let chat_content = {};
+  
+
+  useEffect(() => {
+      const getChat = async () => {
+          try {
+            const responseData2 = {};
+            
+            for (let i = 0; i < chatroom_ids.length; i++) {
+              let response2 = null;
+              let chatroomid = chatroom_ids[i];
+              
+              while (!response2) {
+                try {
+                  console.log("checking : " + chatroomid)
+                  const result2 = await axios.post(
+                    'https://ji9y8rmag0.execute-api.ap-northeast-1.amazonaws.com/Chat/'
+                    ,{
+                      what: "chat",
+                      chatroom_id: chatroomid
+                    } 
+                  )
+                  // console.log(result2.data["body"])
+                  response2 = result2.data["body"];
+                } catch (error) {
+                  console.error(error);
+                  
+                  await new Promise((resolve) => setTimeout(resolve, 1000));
+                }
+              }
+              responseData2[chatroomid] = [];
+              
+              if(response2){
+                responseData2[chatroomid].push(response2[0]["chat_content"]);
+                  // for(j=0; j<chatroom_ids.length; j++){
+                  //     responseData2[chatroomid].push(response2[0]["chat_content"]);
+                  // }
+              }
+            }
+            
+            setData2(responseData2);
+            setIsLoading2(false);
+          } catch (error) {
+            console.error(error);
+            setIsLoading2(false);
+          }
+        };
+        getChat();
+      }, []);
+  console.log(data2);
+
+  const route = useRoute();
+  const data = route.params?.test;
   const [messages, setMessages] = useState([]);
 
   useEffect(() => {
@@ -89,7 +146,7 @@ const Chat = () => {
     const initialMessages = [
       {
         _id: 1,
-        text: 'こんにちは !!😀',
+        text: 'こんにちは !!😀' + data?.name,
         createdAt: new Date(),
         user: {
           _id: 2,

@@ -72,6 +72,7 @@ const MatchTemplate = ({myProp}) =>  {
     });
 
     const userid = 4;
+    const chats = {};
     const [data, setData] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const chatroom_ids = [];
@@ -86,7 +87,7 @@ const MatchTemplate = ({myProp}) =>  {
                 userid_like_to: userid
                 } 
             )
-            console.log(response.data)
+            
             setData(response.data);
             setIsLoading(false);
             } catch (error) {
@@ -101,30 +102,96 @@ const MatchTemplate = ({myProp}) =>  {
         console.log("loading....2")
     ) : (
         data.length > 0 ? (
-            // console.log(data)
             data.map(array => (
-                // console.log(array),
                 chatroom_ids.push(array["chatroom_id"])
             ))
         ) : (
             console.log("No data available3")
         )
     )
-    console.log(chatroom_ids)
+  
+    data.forEach(item => {
+      chats[item.chatroom_id] = {};
+    });
+    // console.log(chats);
+
+    const [data5, setData5] = useState([]);
+    const [isLoading5, setIsLoading5] = useState(true);
+    const chatroom_ids5 = {};
+
+    useEffect(() => {
+      const getChat_mem = async () => {
+          try {
+            const responseData5 = {};
+            
+            for (let i = 0; i < chatroom_ids.length; i++) {
+              let response5 = null;
+              let chatroomid = chatroom_ids[i];
+              
+              while (!response5) {
+                try {
+                  const result5 = await axios.post(
+                    'https://7xdpowakpg.execute-api.ap-northeast-1.amazonaws.com/chatroom'
+                    ,{
+                      what: "chatroom_mem",
+                      chatroom_id: chatroomid
+                    } 
+                  )
+                  response5 = result5.data;
+                } catch (error) {
+                  console.error(error);
+                  
+                  await new Promise((resolve) => setTimeout(resolve, 1000));
+                }
+              }
+              responseData5[chatroomid] = [];
+                
+              if(response5){
+                responseData5[chatroomid].push(response5[0]);
+                // chats[chatroomid] = { chatroom_id: 1, messages: [] };
+              }
+            }
+            // if(response5){
+            //   responseData5
+            //   setData5(response5);
+            //   setIsLoading5(false);
+            // }
+            setData5(responseData5);
+            setIsLoading5(false);
+          } catch (error) {
+            console.error(error);
+            setIsLoading5(false);
+          }
+        };
+        getChat_mem();
+      }, []);
+
+    console.log(data5);
+
+    for (let key in data5) {
+      if (data5.hasOwnProperty(key)) {
+        const chatList = data5[key];
+          
+        chatList.forEach(chat => {
+          if (chat.userid_like_from == userid || chat.userid_like_to == userid) {
+            console.log(`Match found for user ${userid} in chat ${key}`);
+          }
+        });
+      }
+    }
 
     const [data2, setData2] = useState([]);
     const [isLoading2, setIsLoading2] = useState(true);
     const match_from_ids = []
-
+    
     useEffect(() => {
-    const getUser = async () => {
+      const getUser = async () => {
         try {
           const responseData = [];
-          
+          const chatroom_ids2 = {};
           for (let i = 0; i < myProp.length; i++) {
             let response = null;
             let match_from_id = myProp[i];
-            
             while (!response) {
               try {
                 const result = await axios.post(
@@ -141,11 +208,12 @@ const MatchTemplate = ({myProp}) =>  {
                 await new Promise((resolve) => setTimeout(resolve, 1000));
               }
             }
-      
-            responseData.push(response);
+            if(response){
+              chatroom_ids2[match_from_id] = response;
+            }
           }
-      
-          setData2(responseData);
+          
+          setData2(chatroom_ids2);
           setIsLoading2(false);
         } catch (error) {
           console.error(error);
@@ -154,25 +222,10 @@ const MatchTemplate = ({myProp}) =>  {
       };
       getUser();
     }, []);
-
-    isLoading2 ? (
-        console.log("loading....2")
-      ) : (
-          data2.length > 0 ? (
-            // console.log(data)
-            data2.map(array => (
-                // console.log(array)
-                match_from_ids.push(array)
-            ))
-          ) : (
-            console.log("No data available2")
-          )
-    )
+    // console.log(data2)
 
     const [data3, setData3] = useState([]);
     const [isLoading3, setIsLoading3] = useState(true);
-    let chat_content = {};
-    
 
     useEffect(() => {
         const getChat = async () => {
@@ -185,7 +238,7 @@ const MatchTemplate = ({myProp}) =>  {
                 
                 while (!response2) {
                   try {
-                    console.log("checking : " + chatroomid)
+                    // console.log("checking : " + chatroomid)
                     const result2 = await axios.post(
                       'https://ji9y8rmag0.execute-api.ap-northeast-1.amazonaws.com/Chat/'
                       ,{
@@ -193,7 +246,6 @@ const MatchTemplate = ({myProp}) =>  {
                         chatroom_id: chatroomid
                       } 
                     )
-                    
                     response2 = result2.data["body"];
                   } catch (error) {
                     console.error(error);
@@ -202,11 +254,12 @@ const MatchTemplate = ({myProp}) =>  {
                   }
                 }
                 responseData2[chatroomid] = [];
+                
                 if(response2){
-                    for(j=0; j<2; j++){
-                        responseData2[chatroomid].push(response2[j]["chat_content"]);
-                    }
+                  responseData2[chatroomid].push(response2[0]["chat_content"]);
+                  chats[chatroomid] = { chatroom_id: 1, messages: [] };
                 }
+                // chats[chatroomid] = response2[0]["chat_content"];
               }
               
               setData3(responseData2);
@@ -218,30 +271,21 @@ const MatchTemplate = ({myProp}) =>  {
           };
           getChat();
         }, []);
-    console.log(data3[3]);
-       
-    // isLoading3 ? (
-    //     console.log("loading....3")
-    // ) : (
-    //     data3.length > 0 ? (
-    //         // console.log(data)
-    //         data3.map(array => (
-    //             console.log("먼저 여기 : "+ array),
-    //             chat_content.push(array["chat_content"])
-    //         ))
-    //     ) : (
-    //         console.log("No data available3")
-    //     )
-    // )
-    // console.log("여기다 : " +chat_content[0])
+    // console.log(data3);
     
+    for (let key in data3) {
+      // console.log(key);
+      chats[key] = data3[key][0];
       
+    }
+    
+    // console.log(chats);
 
-    if (match_from_ids.length > 0) {
+    if (Object.keys(data2).length > 0) {
         return (
-            match_from_ids.map(tag => ( 
+          Object.entries(data2).map(([key, value])  => ( 
                 <View style={styles.container}>
-                    <TouchableOpacity onPress={() => navigation.navigate('Chat')}>
+                    <TouchableOpacity onPress={() => navigation.navigate('Chat', { chat_id : data2[key]} )}>
                     <View style={styles.view_social}>
                         <View style={styles.view_social_info}>
                             <View style={styles.view_image}>
@@ -255,9 +299,8 @@ const MatchTemplate = ({myProp}) =>  {
                                     /></View>                
                             </View>
                             <View style={{ marginLeft:10 }}>
-                                <Text style={styles.point}>{tag}</Text>
-                                <Text>저 님한테 관심있어요 !</Text>
-                                <Text>좋아요 받아주셔서 감사합니다 ㅎㅎ</Text>
+                                <Text style={styles.point}>{value}</Text>
+                                <Text>{data3[key]}</Text>
                             </View>
                         </View>
                     </View>

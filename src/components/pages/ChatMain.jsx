@@ -141,9 +141,6 @@ export default function ChatMain() {
           console.log("No data available3")
       )
   )
-  console.log("chatmain :::")
-  console.log(match_from_ids)
-  console.log(match_from_ids.length)
 
   const [data3, setData3] = useState([]);
   
