@@ -9,6 +9,8 @@ import { useState, useEffect } from 'react';
 import { TextInput,
 Button } from 'react-native-paper';
 
+import axios from 'axios';
+
 const SocialDetailTextInputOrganisms = (props) =>  {
 
 const color = require('@assets/color.json');
@@ -28,9 +30,8 @@ const styles = StyleSheet.create({
     },
     text_input: {
         width: '80%',
-        height: 10,
         borderRadius: 10,
-        backgroundColor: color.light_gray,
+        backgroundColor: 'white',
     },
     button: {
         width: '20%',
@@ -38,14 +39,30 @@ const styles = StyleSheet.create({
     }
 });
 
+function registSocial() {
+    axios.post(
+        'https://6emh0gtr77.execute-api.ap-northeast-1.amazonaws.com/SocialDetail',
+        {
+            social_room_id : 1,
+            lead : text,
+            delete_flag : 0,
+            creator_id : 1,
+        }
+    ).then((res) => {
+        setText('');
+    });
+}
+
 return (
     <KeyboardAvoidingView style={styles.container}
-    behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
+    behavior={Platform.select({ios: 'padding'})}>
         <TextInput style={styles.text_input}
             value={text}
-            onChange={text => setText(text)}
+            onChangeText={text => setText(text)}
         />
-        <Button style={styles.button}>送信</Button>
+        <Button style={styles.button}
+            onPress={() => registSocial()}
+        >送信</Button>
     </KeyboardAvoidingView>
 );
 }

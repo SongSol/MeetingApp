@@ -27,6 +27,8 @@ import AppContext from '@components/atoms/AppContext';
 import BottomNavigation from '@components/pages/BottomNavigation';
 import SocialList from '@components/pages/Social/List';
 import SocialDetail from '@components/pages/Social/SocialDetail';
+import CognitoTest from '@components/pages/CognitoTest';
+import MyPage from '@components/pages/MyPage';
 // import {View, Button, Image, StyleSheet, Text} from 'react-native';
 
 export default function App() {
@@ -75,6 +77,8 @@ export default function App() {
             <Stack.Screen name="BottomNavigation" component={BottomNavigation} />
             <Stack.Screen name="SocialList" component={SocialList} />
             <Stack.Screen name="SocialDetail" component={SocialDetail} />
+            <Stack.Screen name="MyPage" component={MyPage} />
+            <Stack.Screen name="CognitoTest" component={CognitoTest} />
           </Stack.Navigator>
         </NavigationContainer>
       </Provider>

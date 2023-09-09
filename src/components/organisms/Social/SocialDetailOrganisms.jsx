@@ -1,3 +1,5 @@
+import React, { useEffect, useState, useContext } from 'react';
+import axios from 'axios';
 import {View, 
     StyleSheet,
     Text,
@@ -55,6 +57,24 @@ const styles = StyleSheet.create({
         marginRight: 2
     },
 });
+
+useEffect(() => {
+    const getSocialDetails = async () => {
+        try {
+            const res = await axios.get('https://6emh0gtr77.execute-api.ap-northeast-1.amazonaws.com/SocialDetail?social_room_id=1');
+            console.log(res.data);
+        } catch(e) {
+            console.log(e);
+        }
+    }
+
+    getSocialDetails();
+
+    const interval = setInterval(() => {
+        getSocialDetails();
+      }, 5000);
+      return () => clearInterval(interval);
+},[]);
 
 return (
     <View>

@@ -21,15 +21,19 @@ export default function SocialDetail({navigation}) {
         },
 
         footer: {
-          height: 70,
-          marginBottom: 20,
-        }
+          height: '15%',
+          marginBottom: 25,
+        },
+
+        scrollview: {
+            height: '85%'
+        },
       });
 
 
     return (
         <View style={styles.container}>
-            <ScrollView>
+            <ScrollView style={styles.scrollview}>
                 <Text style={styles.title}>Detail</Text>
                 <SocialDetailTemplate></SocialDetailTemplate>
             </ScrollView>

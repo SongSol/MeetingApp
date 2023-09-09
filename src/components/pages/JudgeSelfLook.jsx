@@ -14,7 +14,11 @@ export default function JudgeSelfLook({navigation}) {
     useEffect(() => {
         const getUserScore = async () => {
             try {
-                const res = await axios.get('https://es93a6wdv6.execute-api.ap-northeast-1.amazonaws.com/UserProfileScore?user=1');
+                const res = await axios.get('https://es93a6wdv6.execute-api.ap-northeast-1.amazonaws.com/UserProfileScore?', {
+                    params: {
+                    user: 1
+                  }});
+                  
                 setUserScore(res.data[0]);
             } catch(e) {
                 console.log(e);

@@ -31,20 +31,23 @@ const SocialTemplate = props =>  {
             backgroundColor: '#fff',
         }
     });
+    const socialListOrganisms = data.map(tag => {
+        return (
+            <SocialListOrganisms 
+                styles={styles.social_list}
+                onPress={props.onPress}
+                tag={tag}
+                key={tag.id}
+            />
+        )
+    })
 
     if (data.length > 0) {
         return (
             <ScrollView
-            showsVerticalScrollIndicator={false}>
-                {data.map(tag =>{
-                    return (
-                        <SocialListOrganisms 
-                            styles={styles.social_list}
-                            onPress={props.onPress}
-                            tag={tag}
-                        />
-                    )
-                })}
+            showsVerticalScrollIndicator={false}
+            key={data.id}>
+                {socialListOrganisms}
             </ScrollView>
         );
     } else {

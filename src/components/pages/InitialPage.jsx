@@ -49,6 +49,12 @@ export default function InitialPage({navigation}) {
             <Button mode="text" onPress={() => navigation.navigate('SocialList')}>
                 소셜리스트
             </Button>
+            <Button mode="text" onPress={() => navigation.navigate('MyPage')}>
+                마이페이지
+            </Button>
+            <Button mode="text" onPress={() => navigation.navigate('CognitoTest')}>
+                CognitoTest
+            </Button>
         </View>
     );
 }
