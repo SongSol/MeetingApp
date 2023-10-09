@@ -1,7 +1,7 @@
 import React from 'react';
 import {View, StyleSheet, Image } from 'react-native';
-import UserInfo from '@components/templates/MyPage/UserInfoTemplate';
-import MainPage from '@components/templates/MyPage/MainPageTemplate';
+import UserInfo from '@components/templates/mypage/UserInfoTemplate';
+import MainPage from '@components/templates/mypage/MainPageTemplate';
 import CustomText from '@components/atoms/CustomText';
 
 export default function MyPage({}) {

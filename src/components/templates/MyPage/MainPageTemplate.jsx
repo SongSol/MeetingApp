@@ -1,6 +1,7 @@
 import React from 'react';
 import {View, StyleSheet, Image } from 'react-native';
 import CustomText from '@components/atoms/CustomText';
+import ProfileList from '@components/organisms/mypage/ProfileList'
 
 export default function UserInfo({}) {
     const color = require('@assets/color.json');
@@ -12,9 +13,8 @@ export default function UserInfo({}) {
             alignItems: 'center',
         },
         firstContainer: {
-            backgroundColor: color.light_gray,
             width: '100%',
-            height: 80,
+            height: 100,
             borderRadius: 10,
             margin: 20
         },
@@ -28,11 +28,7 @@ export default function UserInfo({}) {
     return (
         <View style={styles.container}>
             <View style={styles.firstContainer}>
-                <CustomText 
-                    style={"title"}
-                    variant="headlineSmall" 
-                    text="마이페이지1"
-                />
+                <ProfileList/>
             </View>
             <View style={styles.secondontainer}>
                 <CustomText 

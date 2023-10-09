@@ -28,14 +28,22 @@ export default function MyPageUserInfo({}) {
             fontSize: 10,
         },
         modifyIcon: {
-            width: 30,
-            height: 30,
+            width: 25,
+            height: 25,
+            right: 15,
+            bottom: 10,
+            backgroundColor: 'white'
+        },
+        imageView: {
+            flexDirection: 'row',
         }
       });
     return (
         <View style={styles.container}>
-            <Image defaultSource={require('@assets/images/차은우.png')} style={styles.image} />
-            <Image defaultSource={require('@assets/images/icons/editing.png')} style={styles.modifyIcon} />
+            <View style={styles.imageView}>
+                <Image defaultSource={require('@assets/images/차은우.png')} style={styles.image} />
+                <Image defaultSource={require('@assets/images/icons/editing.png')} style={styles.modifyIcon} />
+            </View>
             <CustomText 
                 style={"title"}
                 variant="headlineSmall" 
